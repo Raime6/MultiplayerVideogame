@@ -1,2 +1,2 @@
 # MultiplayerVideogame
- C++ Videogame exercise using conexion UDP and multithreading
+ Small C++ Videogame using conexion UDP and multithreading

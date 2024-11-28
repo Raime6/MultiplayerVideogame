@@ -130,12 +130,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\UDPLib1\UI.cpp" />
     <ClCompile Include="UDPClient.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UDPLib1\UDPLib1.vcxproj">
       <Project>{fd60595f-7c65-43bc-9618-13b7762b42af}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\UDPLib1\UI.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

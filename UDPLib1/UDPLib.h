@@ -1,3 +1,4 @@
+
 #pragma once
 #include <time.h>
 #include <Windows.h>
@@ -6,65 +7,96 @@
 #include <WinSock2.h>
 #include <WS2tcpip.h>
 #include <string>
+#include <variant>
 #include <assert.h>
 
 #define MSG_SIZE 256
 
-enum Action
-{
-    SHOWMAINMENU
-};
+using Parameter = std::variant<int>;
+using string    = std::string;
 
-typedef class DataPacket {
-public:
-    int client_id;
-    int sequence;
-    //enum action;
-    //void[] variables;
+typedef class DataPacket
+{
+    private:
+        int                    client_id;
+        int                    sequence;
+        string                 functionName;
+        map<string, Parameter> parameters;
     
-    DataPacket() {};
-    DataPacket(int _client_id, int _sequence) {
-        //DataPacket(int _client_id, int _sequence, int _op1, int _operation, int _op2) {
-        client_id = _client_id;
-        sequence = _sequence;
-        //action = _action;
-    }
+    public:
+        DataPacket() {};
+        DataPacket(int _client_id, int _sequence, string _functionName)
+        {
+            client_id    = _client_id;
+            sequence     = _sequence;
+            functionName = _functionName;
+            parameters[""] = -1;
+        }
 } *PDataPacket;
 
-typedef class ThreadInfo {
-public:
-    int thread_id;
-    SOCKET s;
-    std::string prefix;
-    ThreadInfo() {};
-    ThreadInfo(int _thread_id, SOCKET _s, std::string _prefix) {
-        thread_id = _thread_id;
-        s = _s;
-        prefix = _prefix.c_str();
-    }
-    ~ThreadInfo() {
-        closesocket(s);
-    }
+typedef class ThreadInfo
+{
+    private:
+        int    thread_id;
+        SOCKET s;
+        string prefix;
+
+    public:
+        ThreadInfo() {};
+        ThreadInfo(int _thread_id, SOCKET _s, std::string _prefix)
+        {
+            thread_id = _thread_id;
+            s         = _s;
+            prefix    = _prefix.c_str();
+        }
+        
+        ~ThreadInfo()
+        {
+            closesocket(s);
+        }
+
+        int getId()
+        {
+            return thread_id;
+        }
+        SOCKET getSocket()
+        {
+            return s;
+        }
+        string getPrefix()
+        {
+            return prefix;
+        }
+        void setPrefix(string _prefix)
+        {
+            prefix = _prefix;
+        }
 } *PThreadInfo;
+
+
+
+// METHODS
 
 std::ostream& operator << (std::ostream& os, const DataPacket& dp);
 // The reason this is in a separate file is because I want to use this
 // on the server and the client
 
-void treatError(const std::string msg, SOCKET s);
+void treatError           (const std::string msg, SOCKET s);
 
-void treatErrorExit(const std::string msg, SOCKET s, int error);
+void treatErrorExit       (const std::string msg, SOCKET s, int error);
 
-int udpCommonSocketSetup(SOCKET s, PCSTR address, u_short port, sockaddr_in* addr);
+int  udpCommonSocketSetup (SOCKET s, PCSTR address, u_short port, sockaddr_in* addr);
 
-int udpServerSocketSetup(SOCKET s, PCSTR address, u_short port, sockaddr_in* addr);
+int  udpServerSocketSetup (SOCKET s, PCSTR address, u_short port, sockaddr_in* addr);
+
+
 
 //UDP calls
 
-int sendtoMsg(SOCKET s, sockaddr_in* dest_addr, PDataPacket packet, std::string prefix);
+int sendtoMsg         (SOCKET s, sockaddr_in* dest_addr, PDataPacket packet, std::string prefix);
 
-int recvfromMsg(SOCKET s, sockaddr_in* sender_addr, PDataPacket response, std::string prefix);
+int recvfromMsg       (SOCKET s, sockaddr_in* sender_addr, PDataPacket response, std::string prefix);
 
-int sendtorecvfromMsg(SOCKET s, sockaddr_in* dest_addr, PDataPacket packet, PDataPacket response, std::string prefix);
+int sendtorecvfromMsg (SOCKET s, sockaddr_in* dest_addr, PDataPacket packet, PDataPacket response, std::string prefix);
 
-int recvfromsendtoMsg(SOCKET s, PDataPacket response, std::string prefix);
+int recvfromsendtoMsg (SOCKET s, PDataPacket response, std::string prefix);

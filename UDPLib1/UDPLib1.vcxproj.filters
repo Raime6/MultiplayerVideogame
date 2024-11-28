@@ -24,18 +24,12 @@
     <ClInclude Include="UDPLib.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="UI.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="UDPLib.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="pch.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="UI.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>

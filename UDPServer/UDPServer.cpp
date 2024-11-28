@@ -9,6 +9,7 @@
 #include <format>
 
 #include "UDPLib.h"
+#include "ServerVideoGame.h"
 
 #define MAX_THREADS 5
 
@@ -154,21 +155,24 @@ DWORD WINAPI threadFun(LPVOID param)
 
     // TODO: while () receive msgs, send them back
     PDataPacket packet = new DataPacket();
-    thInfo.setPrefix("Server thread (" + std::to_string(thInfo.getId()) + "):");
+    thInfo->setPrefix("Server thread (" + std::to_string(thInfo->getId()) + "):");
 
     bool serve = true;
     while (serve)
     {
-        std::cout << "Server thread (" << thInfo.getId() << ") ready to recv" << std::endl;
+        std::cout << "Server thread (" << thInfo->getId() << ") ready to recv" << std::endl;
 
         // receive the packet and write its data to the packet struct, from the address addr with a specific length
         sockaddr_in client_addr;
-        recvfromMsg(thInfo.getSocket(), &client_addr, packet, thInfo.getPrefix());
+        recvfromMsg(thInfo->getSocket(), &client_addr, packet, thInfo->getPrefix());
 
         DataPacket clientPacket = (DataPacket)*packet;
 
         //do something
         cout << "ClientPacket: " << clientPacket << endl;
+        cout << "ClientPacket: " << clientPacket.getFunction() << endl;
+        if (clientPacket.getFunction().compare("printHello"))
+            printHello();
 
         cout << endl;
     }

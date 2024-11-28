@@ -58,6 +58,11 @@ int main(int argc, char* argv[])
     string prefix = "Client:";
     obtainNewPort(s, &server_addr, prefix);
 
+    PDataPacket packet   = new DataPacket(client, 0, "printHello");
+    PDataPacket response = new DataPacket();
+    
+    sendtoMsg(s, &server_addr, packet, prefix);
+
     //for (int i = 0; i < MAX_MSGS; i++) {
 
     //    DataPacket packet(client, i, SHOWMAINMENU, nullptr);
@@ -99,8 +104,11 @@ int obtainNewPort(SOCKET s, sockaddr_in* server_addr, string prefix)
 
     PDataPacket response = new DataPacket();
     //will overwrite server_addr with the server addr with the new port, since the response msg in the server is sent through the new socket!
-    //sendtorecvfromMsg(s, server_addr, packet, response, prefix);
+    sendtorecvfromMsg(s, server_addr, packet, response, prefix);
     cout << endl;
+
+    //delete packet;
+    //delete response;
 
     return 0;
 }

@@ -8,6 +8,7 @@
 #include <WS2tcpip.h>
 #include <string>
 #include <variant>
+#include <map>
 #include <assert.h>
 
 #define MSG_SIZE 256
@@ -18,10 +19,10 @@ using string    = std::string;
 typedef class DataPacket
 {
     private:
-        int                    client_id;
-        int                    sequence;
-        string                 functionName;
-        map<string, Parameter> parameters;
+        int                         client_id;
+        int                         sequence;
+        string                      functionName;
+        std::map<string, Parameter> parameters;
     
     public:
         DataPacket() {};
@@ -30,7 +31,19 @@ typedef class DataPacket
             client_id    = _client_id;
             sequence     = _sequence;
             functionName = _functionName;
-            parameters[""] = -1;
+        }
+
+        int getClient()
+        {
+            return client_id;
+        }
+        int getSequence()
+        {
+            return sequence;
+        }
+        string getFunction()
+        {
+            return functionName;
         }
 } *PDataPacket;
 
@@ -77,7 +90,7 @@ typedef class ThreadInfo
 
 // METHODS
 
-std::ostream& operator << (std::ostream& os, const DataPacket& dp);
+std::ostream& operator << (std::ostream& os, DataPacket& dp);
 // The reason this is in a separate file is because I want to use this
 // on the server and the client
 

@@ -1,7 +1,4 @@
 
-// UDPLib1.cpp : Define las funciones de la biblioteca estática.
-//
-
 #include "pch.h"
 #include "UI.h"
 

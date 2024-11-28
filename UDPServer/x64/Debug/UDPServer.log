@@ -1,3 +1,4 @@
 ﻿  UDPServer.cpp
-C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.h(24,9): error C7568: falta la lista de argumentos después de la plantilla de función supuesta "map"
-C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPServer\UDPServer.cpp(166,9): error C2660: 'recvfromMsg': la función no acepta 3 argumentos
+C:\Users\xcana\Documents\GitHub\MultiplayerVideogame\UDPServer\UDPServer.cpp(61,17): warning C4101: 'pDataArray': unreferenced local variable
+C:\Users\xcana\Documents\GitHub\MultiplayerVideogame\UDPServer\UDPServer.cpp(62,17): warning C4101: 'dwThreadIdArray': unreferenced local variable
+  UDPServer.vcxproj -> C:\Users\xcana\Documents\GitHub\MultiplayerVideogame\x64\Debug\UDPServer.exe

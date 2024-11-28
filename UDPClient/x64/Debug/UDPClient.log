@@ -1,5 +1,2 @@
-﻿  UI.cpp
-  UDPClient.cpp
-C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.h(24,9): error C7568: falta la lista de argumentos después de la plantilla de función supuesta "map"
-C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.h(24,9): error C7568: falta la lista de argumentos después de la plantilla de función supuesta "map"
-  Generando código...
+﻿  UDPClient.cpp
+  UDPClient.vcxproj -> C:\Users\xcana\Documents\GitHub\MultiplayerVideogame\x64\Debug\UDPClient.exe

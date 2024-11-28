@@ -13,9 +13,9 @@
 
 // METHODS
 
-std::ostream& operator << (std::ostream& os, const DataPacket& dp)
+std::ostream& operator << (std::ostream& os, DataPacket& dp)
 {
-    return (os << "DataPacket{client: " << dp.client_id << " seq: " << dp.sequence /*<< " msg: " << dp.msg */<< " }");
+    return (os << "DataPacket{client: " << dp.getClient() << " seq: " << dp.getSequence() << " func: " << dp.getFunction() << " }");
 }
 
 //will print msg with WSAGetLastError, then closesocket

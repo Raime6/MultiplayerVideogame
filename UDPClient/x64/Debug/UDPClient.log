@@ -1,2 +1,6 @@
-﻿  UDPClient.cpp
+﻿  UI.cpp
+C:\Users\xcana\Documents\GitHub\MultiplayerVideogame\UDPLib1\UI.h(18,2): warning C4091: 'typedef ': ignored on left of 'UI' when no variable is declared
+  UDPClient.cpp
+C:\Users\xcana\Documents\GitHub\MultiplayerVideogame\UDPLib1\UI.h(18,2): warning C4091: 'typedef ': ignored on left of 'UI' when no variable is declared
+  Generating Code...
   UDPClient.vcxproj -> C:\Users\xcana\Documents\GitHub\MultiplayerVideogame\x64\Debug\UDPClient.exe

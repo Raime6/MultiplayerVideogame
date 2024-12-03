@@ -9,7 +9,7 @@
 #include <format>
 
 #include "UDPLib.h"
-#include "ServerVideoGame.h"
+#include "VideoGame.h"
 
 #define MAX_THREADS 5
 
@@ -157,6 +157,9 @@ DWORD WINAPI threadFun(LPVOID param)
     PDataPacket packet = new DataPacket();
     thInfo->setPrefix("Server thread (" + std::to_string(thInfo->getId()) + "):");
 
+    // Creates the videogame for the Client
+    VideoGame videoGame;
+
     bool serve = true;
     while (serve)
     {
@@ -171,8 +174,10 @@ DWORD WINAPI threadFun(LPVOID param)
         //do something
         cout << "ClientPacket: " << clientPacket << endl;
         cout << "ClientPacket: " << clientPacket.getFunction() << endl;
-        if (clientPacket.getFunction().compare("printHello"))
-            printHello();
+        cout << "Serve: "        << serve << endl;
+        if (clientPacket.getFunction().compare("exitGame"))
+            videoGame.exitGame(serve);
+        cout << "Serve: " << serve << endl;
 
         cout << endl;
     }

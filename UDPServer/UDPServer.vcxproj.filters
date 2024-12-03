@@ -18,12 +18,12 @@
     <ClCompile Include="UDPServer.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="ServerVideoGame.cpp">
+    <ClCompile Include="VideoGame.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ServerVideoGame.h">
+    <ClInclude Include="VideoGame.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

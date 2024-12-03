@@ -56,12 +56,34 @@ int main(int argc, char* argv[])
     server_addr.sin_port = htons(4000);
 
     string prefix = "Client:";
+    int sequence = 0;
     obtainNewPort(s, &server_addr, prefix);
 
-    PDataPacket packet   = new DataPacket(client, 0, "printHello");
+    // Once the conexion is created, the Client creates de UI
+    UI ui;
+    int optionMainMenu = 0, optionSelectCharacter;
+    
+    // Main Menu
+    do
+    {
+        // Shows UI
+        optionMainMenu = ui.showMainMenu();
+        
+        // If User selects 1, shows SelectCharacer Menu, if it's 2, sends Datapack to close Thread in Server
+        if (optionMainMenu == 1)
+            optionSelectCharacter = ui.showSelectCharacter();
+        else if (optionMainMenu == 2)
+        {
+            PDataPacket packet = new DataPacket(client, sequence, "exitGame");
+            ++sequence;
+            sendtoMsg(s, &server_addr, packet, prefix);
+        }
+    } while (optionMainMenu < 1 || optionMainMenu > 2);
+
+    /*PDataPacket packet   = new DataPacket(client, 0, "printHello");
     PDataPacket response = new DataPacket();
     
-    sendtoMsg(s, &server_addr, packet, prefix);
+    sendtoMsg(s, &server_addr, packet, prefix);*/
 
     //for (int i = 0; i < MAX_MSGS; i++) {
 
@@ -106,9 +128,6 @@ int obtainNewPort(SOCKET s, sockaddr_in* server_addr, string prefix)
     //will overwrite server_addr with the server addr with the new port, since the response msg in the server is sent through the new socket!
     sendtorecvfromMsg(s, server_addr, packet, response, prefix);
     cout << endl;
-
-    //delete packet;
-    //delete response;
 
     return 0;
 }

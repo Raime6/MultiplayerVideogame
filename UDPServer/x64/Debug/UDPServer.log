@@ -1,4 +1,8 @@
-﻿  UDPServer.cpp
+﻿  VideoGame.cpp
+C:\Users\xcana\Documents\GitHub\MultiplayerVideogame\UDPServer\VideoGame.h(12,2): warning C4091: 'typedef ': ignored on left of 'VideoGame' when no variable is declared
+  UDPServer.cpp
+C:\Users\xcana\Documents\GitHub\MultiplayerVideogame\UDPServer\VideoGame.h(12,2): warning C4091: 'typedef ': ignored on left of 'VideoGame' when no variable is declared
 C:\Users\xcana\Documents\GitHub\MultiplayerVideogame\UDPServer\UDPServer.cpp(61,17): warning C4101: 'pDataArray': unreferenced local variable
 C:\Users\xcana\Documents\GitHub\MultiplayerVideogame\UDPServer\UDPServer.cpp(62,17): warning C4101: 'dwThreadIdArray': unreferenced local variable
+  Generating Code...
   UDPServer.vcxproj -> C:\Users\xcana\Documents\GitHub\MultiplayerVideogame\x64\Debug\UDPServer.exe

@@ -1,10 +1,10 @@
 
-#include "pch.h"
-#include "UI.h"
+#include "pch.hpp"
+#include "UI.hpp"
 
 
 
-int UI::selectOptionMenu()
+int Interface::UI::selectOptionMenu()
 {
 	int optionMenu;
 
@@ -19,7 +19,7 @@ int UI::selectOptionMenu()
 
 // MAIN MENU
 
-int UI::showMainMenu()
+int Interface::UI::showMainMenu()
 {
 	std::cout << "Select an option:" << std::endl;
 	std::cout << "1. New Game"		 << std::endl;
@@ -33,7 +33,7 @@ int UI::showMainMenu()
 
 // SELECT CHARACTER
 
-int UI::showSelectCharacter()
+int Interface::UI::showSelectCharacter()
 {
 	std::cout << "Select an option:" << std::endl;
 	std::cout << "1. Warrior"        << std::endl;

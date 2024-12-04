@@ -139,7 +139,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="VideoGame.h" />
+    <ClInclude Include="Character.hpp" />
+    <ClInclude Include="Mage.hpp" />
+    <ClInclude Include="Priest.hpp" />
+    <ClInclude Include="VideoGame.hpp" />
+    <ClInclude Include="Warrior.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

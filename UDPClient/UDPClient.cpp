@@ -9,12 +9,13 @@
 #include <string>
 #include <Windows.h>
 
-#include "UDPLib.h"
-#include "UI.h"
+#include "UDPLib.hpp"
+#include "UI.hpp"
 
 #define MAX_MSGS 4
 
 using namespace std;
+using namespace Interface;
 
 int obtainNewPort (SOCKET s, sockaddr_in* server_addr, string prefix);
 

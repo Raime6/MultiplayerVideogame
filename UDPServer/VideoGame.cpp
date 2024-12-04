@@ -1,8 +1,6 @@
 
-#include "pch.h"
-#include "VideoGame.h"
+#include "pch.hpp"
+#include "VideoGame.hpp"
 
-void VideoGame::exitGame(bool serve)
-{
-	serve = false;
-}
+
+

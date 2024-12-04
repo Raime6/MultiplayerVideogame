@@ -8,12 +8,13 @@
 #include <math.h>
 #include <format>
 
-#include "UDPLib.h"
-#include "VideoGame.h"
+#include "UDPLib.hpp"
+#include "VideoGame.hpp"
 
 #define MAX_THREADS 5
 
 using namespace std;
+using namespace ServerVideoGame;
 
 HANDLE       serverFun       (PDataPacket clientPacket, SOCKET s, sockaddr_in* client_addr, int i, string prefix);
 int          getAssignedPort (SOCKET s, sockaddr_in* my_addr);

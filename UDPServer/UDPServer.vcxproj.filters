@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Archivos de encabezado\Characters">
+      <UniqueIdentifier>{2eef10d7-68cf-4f36-906d-529b6fafd9f5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="UDPServer.cpp">
@@ -23,8 +26,20 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="VideoGame.h">
+    <ClInclude Include="VideoGame.hpp">
       <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.hpp">
+      <Filter>Archivos de encabezado\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Warrior.hpp">
+      <Filter>Archivos de encabezado\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Mage.hpp">
+      <Filter>Archivos de encabezado\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Priest.hpp">
+      <Filter>Archivos de encabezado\Characters</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

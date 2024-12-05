@@ -16,37 +16,9 @@ namespace ServerVideoGame
 
 		VideoGame() = default;
 
-		void exitGame(bool);
-
-		// User Character
-		Warrior createWarrior();
-		Mage    createMage();
-		Priest  createPriest();
+		void exitGame(bool serve)
+		{
+			serve = false;
+		}
 	};
-
-
-
-	// Inline implementations
-	inline void exitGame(bool serve)
-	{
-		serve = false;
-	}
-
-	inline Warrior createWarrior()
-	{
-		Warrior newWarrior;
-		return  newWarrior;
-	}
-
-	inline Mage createMage()
-	{
-		Mage   newMage;
-		return newMage;
-	}
-
-	inline Priest createPriest()
-	{
-		Priest newPriest;
-		return newPriest;
-	}
 }

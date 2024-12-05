@@ -17,7 +17,6 @@ using namespace std;
 using namespace ServerVideoGame;
 
 HANDLE       serverFun       (PDataPacket clientPacket, SOCKET s, sockaddr_in* client_addr, int i, string prefix);
-int          getAssignedPort (SOCKET s, sockaddr_in* my_addr);
 DWORD WINAPI threadFun       (LPVOID param);
 
 
@@ -170,15 +169,16 @@ DWORD WINAPI threadFun(LPVOID param)
         sockaddr_in client_addr;
         recvfromMsg(thInfo->getSocket(), &client_addr, packet, thInfo->getPrefix());
 
-        DataPacket clientPacket = (DataPacket)*packet;
+        //DataPacket clientPacket = (DataPacket)*packet;
 
-        //do something
-        cout << "ClientPacket: " << clientPacket << endl;
+        //THREAD BEHAVIOUR
+
+        /*cout << "ClientPacket: " << clientPacket << endl;
         cout << "ClientPacket: " << clientPacket.getFunction() << endl;
         cout << "Serve: "        << serve << endl;
         if (clientPacket.getFunction().compare("exitGame"))
             videoGame.exitGame(serve);
-        cout << "Serve: " << serve << endl;
+        cout << "Serve: " << serve << endl;*/
 
         cout << endl;
     }

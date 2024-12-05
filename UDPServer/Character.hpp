@@ -7,9 +7,9 @@ namespace UserCharacter
 	{
 	protected:
 
-		int   health;
-		int   attack;
-		float defense;
+		int   health  = 0;
+		int   attack  = 0;
+		float defense = 0;
 
 	public:
 

@@ -25,7 +25,7 @@ typedef class DataPacket
         std::map<string, Parameter> parameters;
     
     public:
-        DataPacket() {};
+        DataPacket() {}
         DataPacket(int _client_id, int _sequence, string _functionName)
         {
             client_id    = _client_id;

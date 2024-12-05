@@ -130,7 +130,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="VideoGame.cpp" />
     <ClCompile Include="UDPServer.cpp" />
   </ItemGroup>
   <ItemGroup>

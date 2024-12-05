@@ -21,9 +21,6 @@
     <ClCompile Include="UDPServer.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="VideoGame.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VideoGame.hpp">

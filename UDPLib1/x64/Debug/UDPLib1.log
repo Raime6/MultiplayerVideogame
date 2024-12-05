@@ -1,8 +1,3 @@
 ﻿  pch.cpp
-C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.hpp(65,14): error C3646: 'to_json': especificador de invalidación desconocido
-C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.hpp(65,21): error C2059: error de sintaxis: '('
-C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.hpp(65,24): error C2334: símbolos (token) inesperados delante de '{'; se pasará por alto el cuerpo de función aparente
-C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.hpp(70,30): error C2061: error de sintaxis: identificador 'json'
-C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.hpp(47,30): error C2061: error de sintaxis: identificador 'map'
-C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.hpp(50,20): error C2440: 'delete': no se puede realizar la conversión de 'std::map<string,Parameter,std::less<string>,std::allocator<std::pair<const string,Parameter>>>' a 'void*'
-C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.hpp(71,25): error C2065: 'j': identificador no declarado
+  UDPLib.cpp
+  UDPLib1.vcxproj -> C:\Users\xcana\Documents\GitHub\MultiplayerVideogame\x64\Debug\UDPLib.lib

@@ -186,7 +186,7 @@ DWORD WINAPI threadFun(LPVOID param)
         switch (clientPacket.getFunction())
         {
         case EXIT_GAME:
-            videoGame.exitGame(serve);
+            serve = false;
             break;
 
         case CREATE_WARRIOR:

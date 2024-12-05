@@ -15,10 +15,5 @@ namespace ServerVideoGame
 	public:
 
 		VideoGame() = default;
-
-		void exitGame(bool serve)
-		{
-			serve = false;
-		}
 	};
 }

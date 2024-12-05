@@ -13,7 +13,7 @@
 
 #define MSG_SIZE 256
 
-using Parameter = std::variant<int>;
+//using Parameter = std::variant<int>;
 using string    = std::string;
 
 
@@ -35,7 +35,7 @@ typedef class DataPacket
         int                         client_id;
         int                         sequence;
         functionType                function;
-        std::map<string, Parameter> parameters;
+        //std::map<string, Parameter> parameters;
     
     public:
         DataPacket() {}
@@ -44,11 +44,13 @@ typedef class DataPacket
             client_id = _client_id;
             sequence  = _sequence;
             function  = _function;
-            parameters = new map<string, Parameter>();
+            //parameters = new map<string, Parameter>();
         }
-        ~DataPacket() {
+
+        /*~DataPacket() {
             delete parameters;
-        }
+        }*/
+
         int getClient()
         {
             return client_id;
@@ -62,13 +64,15 @@ typedef class DataPacket
             return function;
         }
 
-        /*json to_json() {
+        /*json to_json()
+        {
             json j;
             j["client_id"] = client_id;
             j["parameters"] = parameters.to_json();
             return j;
         }
-        DataPacket from_json(json j) {
+        DataPacket from_json(json j)
+        {
             client_id = j["client_id"];
         }*/
 } *PDataPacket;

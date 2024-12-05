@@ -17,7 +17,7 @@
 using namespace std;
 using namespace Interface;
 
-int obtainNewPort (SOCKET s, sockaddr_in* server_addr, string prefix);
+int obtainNewPort (SOCKET s, sockaddr_in* server_addr, int client, string prefix);
 
 
 
@@ -58,7 +58,7 @@ int main(int argc, char* argv[])
 
     string prefix = "Client:";
     int sequence = 0;
-    obtainNewPort(s, &server_addr, prefix);
+    obtainNewPort(s, &server_addr, client, prefix);
 
     // Once the conexion is created, the Client creates de UI
     UI ui;
@@ -120,9 +120,9 @@ int main(int argc, char* argv[])
 
 
 //sends first msg to server and returns with the new server_addr used for the server for the dedicated socket
-int obtainNewPort(SOCKET s, sockaddr_in* server_addr, string prefix)
+int obtainNewPort(SOCKET s, sockaddr_in* server_addr, int client, string prefix)
 {
-    PDataPacket packet = new DataPacket(-1, -1, NOT_FUNCTION);
+    PDataPacket packet = new DataPacket(client, -1, NOT_FUNCTION);
     std::cout << "Client ready to send: " << *packet << std::endl;
 
     PDataPacket response = new DataPacket();

@@ -16,23 +16,39 @@
 using Parameter = std::variant<int>;
 using string    = std::string;
 
+
+
+enum functionType
+{
+    NOT_FUNCTION,
+    EXIT_GAME,
+    CREATE_WARRIOR,
+    CREATE_MAGE,
+    CREATE_PRIEST
+};
+
+
+
 typedef class DataPacket
 {
     private:
         int                         client_id;
         int                         sequence;
-        string                      functionName;
+        functionType                function;
         std::map<string, Parameter> parameters;
     
     public:
         DataPacket() {}
-        DataPacket(int _client_id, int _sequence, string _functionName)
+        DataPacket(int _client_id, int _sequence, functionType _function)
         {
-            client_id    = _client_id;
-            sequence     = _sequence;
-            functionName = _functionName;
+            client_id = _client_id;
+            sequence  = _sequence;
+            function  = _function;
+            parameters = new map<string, Parameter>();
         }
-
+        ~DataPacket() {
+            delete parameters;
+        }
         int getClient()
         {
             return client_id;
@@ -41,10 +57,20 @@ typedef class DataPacket
         {
             return sequence;
         }
-        string getFunction()
+        functionType getFunction()
         {
-            return functionName;
+            return function;
         }
+
+        /*json to_json() {
+            json j;
+            j["client_id"] = client_id;
+            j["parameters"] = parameters.to_json();
+            return j;
+        }
+        DataPacket from_json(json j) {
+            client_id = j["client_id"];
+        }*/
 } *PDataPacket;
 
 typedef class ThreadInfo

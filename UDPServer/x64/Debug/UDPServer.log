@@ -1,10 +1,13 @@
 ﻿  UDPServer.cpp
-C:\Users\xcana\Documents\GitHub\MultiplayerVideogame\UDPServer\Character.hpp(20,3): warning C4091: 'typedef ': ignored on left of 'UserCharacter::Character' when no variable is declared
-C:\Users\xcana\Documents\GitHub\MultiplayerVideogame\UDPServer\Warrior.hpp(26,3): warning C4091: 'typedef ': ignored on left of 'UserCharacter::Warrior' when no variable is declared
-C:\Users\xcana\Documents\GitHub\MultiplayerVideogame\UDPServer\Mage.hpp(26,3): warning C4091: 'typedef ': ignored on left of 'UserCharacter::Mage' when no variable is declared
-C:\Users\xcana\Documents\GitHub\MultiplayerVideogame\UDPServer\Priest.hpp(26,3): warning C4091: 'typedef ': ignored on left of 'UserCharacter::Priest' when no variable is declared
-C:\Users\xcana\Documents\GitHub\MultiplayerVideogame\UDPServer\VideoGame.hpp(23,3): warning C4091: 'typedef ': ignored on left of 'ServerVideoGame::VideoGame' when no variable is declared
-C:\Users\xcana\Documents\GitHub\MultiplayerVideogame\UDPServer\UDPServer.cpp(61,17): warning C4101: 'pDataArray': unreferenced local variable
-C:\Users\xcana\Documents\GitHub\MultiplayerVideogame\UDPServer\UDPServer.cpp(62,17): warning C4101: 'dwThreadIdArray': unreferenced local variable
-C:\Users\xcana\Documents\GitHub\MultiplayerVideogame\UDPServer\UDPServer.cpp(161,15): warning C4101: 'videoGame': unreferenced local variable
-  UDPServer.vcxproj -> C:\Users\xcana\Documents\GitHub\MultiplayerVideogame\x64\Debug\UDPServer.exe
+C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.hpp(65,14): error C3646: 'to_json': especificador de invalidación desconocido
+C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.hpp(65,21): error C2059: error de sintaxis: '('
+C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.hpp(65,24): error C2334: símbolos (token) inesperados delante de '{'; se pasará por alto el cuerpo de función aparente
+C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.hpp(70,30): error C2061: error de sintaxis: identificador 'json'
+C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.hpp(47,30): error C2061: error de sintaxis: identificador 'map'
+C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.hpp(50,20): error C2440: 'delete': no se puede realizar la conversión de 'std::map<string,Parameter,std::less<string>,std::allocator<std::pair<const string,Parameter>>>' a 'void*'
+C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.hpp(71,25): error C2065: 'j': identificador no declarado
+C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPServer\Character.hpp(6,16): warning C4091: 'typedef ': se ha omitido a la izquierda de 'UserCharacter::Character' cuando no hay ninguna variable declarada
+C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPServer\Warrior.hpp(8,16): warning C4091: 'typedef ': se ha omitido a la izquierda de 'UserCharacter::Warrior' cuando no hay ninguna variable declarada
+C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPServer\Mage.hpp(8,16): warning C4091: 'typedef ': se ha omitido a la izquierda de 'UserCharacter::Mage' cuando no hay ninguna variable declarada
+C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPServer\Priest.hpp(8,16): warning C4091: 'typedef ': se ha omitido a la izquierda de 'UserCharacter::Priest' cuando no hay ninguna variable declarada
+C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPServer\VideoGame.hpp(12,16): warning C4091: 'typedef ': se ha omitido a la izquierda de 'ServerVideoGame::VideoGame' cuando no hay ninguna variable declarada

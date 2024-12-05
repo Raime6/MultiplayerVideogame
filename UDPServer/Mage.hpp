@@ -5,7 +5,7 @@
 
 namespace UserCharacter
 {
-	typedef class Mage : UserCharacter::Character
+	typedef class Mage : public UserCharacter::Character
 	{
 
 	public:
@@ -19,9 +19,10 @@ namespace UserCharacter
 		}
 
 		// Methods
-		void Ability1() override;
-		void Ability2() override;
-		void Ability3() override;
-		void Ability4() override;
+		void Ability1() override {}
+		void Ability2() override {}
+		void Ability3() override {}
+		void Ability4() override {}
+		void print() override { std::cout << "Hola, soy un Mage" << std::endl; }
 	};
 }

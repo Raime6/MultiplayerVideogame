@@ -1,0 +1,156 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Alumno.DESKTOP-GV16N45.000\\Documents\\GitHub\\MultiplayerVideogame\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{FD60595F-7C65-43BC-9618-13B7762B42AF}|UDPLib1\\UDPLib1.vcxproj|C:\\Users\\Alumno.DESKTOP-GV16N45.000\\Documents\\GitHub\\MultiplayerVideogame\\UDPLib1\\UDPLib.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FD60595F-7C65-43BC-9618-13B7762B42AF}|UDPLib1\\UDPLib1.vcxproj|solutionrelative:UDPLib1\\UDPLib.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C450D4E3-FDEA-4388-9EEF-92D45E4D0CCD}|UDPServer\\UDPServer.vcxproj|C:\\Users\\Alumno.DESKTOP-GV16N45.000\\Documents\\GitHub\\MultiplayerVideogame\\UDPServer\\Character.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C450D4E3-FDEA-4388-9EEF-92D45E4D0CCD}|UDPServer\\UDPServer.vcxproj|solutionrelative:UDPServer\\Character.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C450D4E3-FDEA-4388-9EEF-92D45E4D0CCD}|UDPServer\\UDPServer.vcxproj|C:\\Users\\Alumno.DESKTOP-GV16N45.000\\Documents\\GitHub\\MultiplayerVideogame\\UDPServer\\UDPServer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C450D4E3-FDEA-4388-9EEF-92D45E4D0CCD}|UDPServer\\UDPServer.vcxproj|solutionrelative:UDPServer\\UDPServer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5AA90BD5-BA14-4EAE-9C59-72BD6BA9AC0D}|UDPClient\\UDPClient.vcxproj|C:\\Users\\Alumno.DESKTOP-GV16N45.000\\Documents\\GitHub\\MultiplayerVideogame\\UDPClient\\UDPClient.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{5AA90BD5-BA14-4EAE-9C59-72BD6BA9AC0D}|UDPClient\\UDPClient.vcxproj|solutionrelative:UDPClient\\UDPClient.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C450D4E3-FDEA-4388-9EEF-92D45E4D0CCD}|UDPServer\\UDPServer.vcxproj|C:\\Users\\Alumno.DESKTOP-GV16N45.000\\Documents\\GitHub\\MultiplayerVideogame\\UDPServer\\VideoGame.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C450D4E3-FDEA-4388-9EEF-92D45E4D0CCD}|UDPServer\\UDPServer.vcxproj|solutionrelative:UDPServer\\VideoGame.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C450D4E3-FDEA-4388-9EEF-92D45E4D0CCD}|UDPServer\\UDPServer.vcxproj|C:\\Users\\Alumno.DESKTOP-GV16N45.000\\Documents\\GitHub\\MultiplayerVideogame\\UDPServer\\Warrior.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C450D4E3-FDEA-4388-9EEF-92D45E4D0CCD}|UDPServer\\UDPServer.vcxproj|solutionrelative:UDPServer\\Warrior.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C450D4E3-FDEA-4388-9EEF-92D45E4D0CCD}|UDPServer\\UDPServer.vcxproj|C:\\Users\\Alumno.DESKTOP-GV16N45.000\\Documents\\GitHub\\MultiplayerVideogame\\UDPServer\\Priest.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C450D4E3-FDEA-4388-9EEF-92D45E4D0CCD}|UDPServer\\UDPServer.vcxproj|solutionrelative:UDPServer\\Priest.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C450D4E3-FDEA-4388-9EEF-92D45E4D0CCD}|UDPServer\\UDPServer.vcxproj|C:\\Users\\Alumno.DESKTOP-GV16N45.000\\Documents\\GitHub\\MultiplayerVideogame\\UDPServer\\Mage.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C450D4E3-FDEA-4388-9EEF-92D45E4D0CCD}|UDPServer\\UDPServer.vcxproj|solutionrelative:UDPServer\\Mage.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "VideoGame.hpp",
+              "DocumentMoniker": "C:\\Users\\Alumno.DESKTOP-GV16N45.000\\Documents\\GitHub\\MultiplayerVideogame\\UDPServer\\VideoGame.hpp",
+              "RelativeDocumentMoniker": "UDPServer\\VideoGame.hpp",
+              "ToolTip": "C:\\Users\\Alumno.DESKTOP-GV16N45.000\\Documents\\GitHub\\MultiplayerVideogame\\UDPServer\\VideoGame.hpp",
+              "RelativeToolTip": "UDPServer\\VideoGame.hpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-12-05T14:33:12.678Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Warrior.hpp",
+              "DocumentMoniker": "C:\\Users\\Alumno.DESKTOP-GV16N45.000\\Documents\\GitHub\\MultiplayerVideogame\\UDPServer\\Warrior.hpp",
+              "RelativeDocumentMoniker": "UDPServer\\Warrior.hpp",
+              "ToolTip": "C:\\Users\\Alumno.DESKTOP-GV16N45.000\\Documents\\GitHub\\MultiplayerVideogame\\UDPServer\\Warrior.hpp",
+              "RelativeToolTip": "UDPServer\\Warrior.hpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-12-05T14:19:47.506Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Priest.hpp",
+              "DocumentMoniker": "C:\\Users\\Alumno.DESKTOP-GV16N45.000\\Documents\\GitHub\\MultiplayerVideogame\\UDPServer\\Priest.hpp",
+              "RelativeDocumentMoniker": "UDPServer\\Priest.hpp",
+              "ToolTip": "C:\\Users\\Alumno.DESKTOP-GV16N45.000\\Documents\\GitHub\\MultiplayerVideogame\\UDPServer\\Priest.hpp",
+              "RelativeToolTip": "UDPServer\\Priest.hpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAA7AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-12-05T14:19:46.047Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Mage.hpp",
+              "DocumentMoniker": "C:\\Users\\Alumno.DESKTOP-GV16N45.000\\Documents\\GitHub\\MultiplayerVideogame\\UDPServer\\Mage.hpp",
+              "RelativeDocumentMoniker": "UDPServer\\Mage.hpp",
+              "ToolTip": "C:\\Users\\Alumno.DESKTOP-GV16N45.000\\Documents\\GitHub\\MultiplayerVideogame\\UDPServer\\Mage.hpp",
+              "RelativeToolTip": "UDPServer\\Mage.hpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-12-05T13:37:44.294Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Character.hpp",
+              "DocumentMoniker": "C:\\Users\\Alumno.DESKTOP-GV16N45.000\\Documents\\GitHub\\MultiplayerVideogame\\UDPServer\\Character.hpp",
+              "RelativeDocumentMoniker": "UDPServer\\Character.hpp",
+              "ToolTip": "C:\\Users\\Alumno.DESKTOP-GV16N45.000\\Documents\\GitHub\\MultiplayerVideogame\\UDPServer\\Character.hpp",
+              "RelativeToolTip": "UDPServer\\Character.hpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-12-05T13:36:57.157Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UDPLib.hpp",
+              "DocumentMoniker": "C:\\Users\\Alumno.DESKTOP-GV16N45.000\\Documents\\GitHub\\MultiplayerVideogame\\UDPLib1\\UDPLib.hpp",
+              "RelativeDocumentMoniker": "UDPLib1\\UDPLib.hpp",
+              "ToolTip": "C:\\Users\\Alumno.DESKTOP-GV16N45.000\\Documents\\GitHub\\MultiplayerVideogame\\UDPLib1\\UDPLib.hpp",
+              "RelativeToolTip": "UDPLib1\\UDPLib.hpp",
+              "ViewState": "AQIAAC0AAAAAAAAAAADwv0IAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-12-05T13:21:19.402Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UDPServer.cpp",
+              "DocumentMoniker": "C:\\Users\\Alumno.DESKTOP-GV16N45.000\\Documents\\GitHub\\MultiplayerVideogame\\UDPServer\\UDPServer.cpp",
+              "RelativeDocumentMoniker": "UDPServer\\UDPServer.cpp",
+              "ToolTip": "C:\\Users\\Alumno.DESKTOP-GV16N45.000\\Documents\\GitHub\\MultiplayerVideogame\\UDPServer\\UDPServer.cpp",
+              "RelativeToolTip": "UDPServer\\UDPServer.cpp",
+              "ViewState": "AQIAAJcAAAAAAAAAAADwv6sAAAA2AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-12-05T13:10:34.545Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UDPClient.cpp",
+              "DocumentMoniker": "C:\\Users\\Alumno.DESKTOP-GV16N45.000\\Documents\\GitHub\\MultiplayerVideogame\\UDPClient\\UDPClient.cpp",
+              "RelativeDocumentMoniker": "UDPClient\\UDPClient.cpp",
+              "ToolTip": "C:\\Users\\Alumno.DESKTOP-GV16N45.000\\Documents\\GitHub\\MultiplayerVideogame\\UDPClient\\UDPClient.cpp",
+              "RelativeToolTip": "UDPClient\\UDPClient.cpp",
+              "ViewState": "AQIAAD8AAAAAAAAAAAAAAE0AAABLAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-12-05T13:10:40.689Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

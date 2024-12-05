@@ -16,8 +16,8 @@
 using namespace std;
 using namespace ServerVideoGame;
 
-HANDLE       serverFun       (PDataPacket clientPacket, SOCKET s, sockaddr_in* client_addr, int i, string prefix);
-DWORD WINAPI threadFun       (LPVOID param);
+HANDLE       serverFun (PDataPacket clientPacket, SOCKET s, sockaddr_in* client_addr, int i, string prefix);
+DWORD WINAPI threadFun (LPVOID param);
 
 
 
@@ -169,16 +169,38 @@ DWORD WINAPI threadFun(LPVOID param)
         sockaddr_in client_addr;
         recvfromMsg(thInfo->getSocket(), &client_addr, packet, thInfo->getPrefix());
 
-        //DataPacket clientPacket = (DataPacket)*packet;
+        DataPacket clientPacket = (DataPacket)*packet;
 
         //THREAD BEHAVIOUR
 
+        // Exit Game
         /*cout << "ClientPacket: " << clientPacket << endl;
         cout << "ClientPacket: " << clientPacket.getFunction() << endl;
         cout << "Serve: "        << serve << endl;
         if (clientPacket.getFunction().compare("exitGame"))
             videoGame.exitGame(serve);
         cout << "Serve: " << serve << endl;*/
+        
+        Character* character;
+
+        switch (clientPacket.getFunction())
+        {
+        case EXIT_GAME:
+            videoGame.exitGame(serve);
+            break;
+
+        case CREATE_WARRIOR:
+            character = new Warrior();
+            break;
+
+        case CREATE_MAGE:
+            character = new Mage();
+            break;
+
+        case CREATE_PRIEST:
+            character = new Priest();
+            break;
+        }
 
         cout << endl;
     }

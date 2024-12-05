@@ -75,7 +75,7 @@ int main(int argc, char* argv[])
             optionSelectCharacter = ui.showSelectCharacter();
         else if (optionMainMenu == 2)
         {
-            PDataPacket packet = new DataPacket(client, sequence, "exitGame");
+            PDataPacket packet = new DataPacket(client, sequence, EXIT_GAME);
             ++sequence;
             sendtoMsg(s, &server_addr, packet, prefix);
         }
@@ -122,7 +122,7 @@ int main(int argc, char* argv[])
 //sends first msg to server and returns with the new server_addr used for the server for the dedicated socket
 int obtainNewPort(SOCKET s, sockaddr_in* server_addr, string prefix)
 {
-    PDataPacket packet = new DataPacket(-1, -1, "");
+    PDataPacket packet = new DataPacket(-1, -1, NOT_FUNCTION);
     std::cout << "Client ready to send: " << *packet << std::endl;
 
     PDataPacket response = new DataPacket();

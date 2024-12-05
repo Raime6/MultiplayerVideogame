@@ -17,5 +17,6 @@ namespace UserCharacter
 		virtual void Ability2() = 0;
 		virtual void Ability3() = 0;
 		virtual void Ability4() = 0;
+		virtual void print() = 0;
 	};
 }

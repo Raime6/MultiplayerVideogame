@@ -3,7 +3,7 @@
 
 namespace Interface
 {
-	typedef class UI
+	class UI
 	{
 
 	public:
@@ -17,5 +17,8 @@ namespace Interface
 
 		// SELECT CHARACTER
 		int showSelectCharacter();
+
+		// NEW GAME
+		int showNewGameStart();
 	};
 }

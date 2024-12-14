@@ -5,7 +5,7 @@
 
 namespace UserCharacter
 {
-	typedef class Mage : public UserCharacter::Character
+	class Mage : public UserCharacter::Character
 	{
 
 	public:

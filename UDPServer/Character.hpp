@@ -3,7 +3,7 @@
 
 namespace UserCharacter
 {
-	typedef class Character
+	class Character
 	{
 	protected:
 

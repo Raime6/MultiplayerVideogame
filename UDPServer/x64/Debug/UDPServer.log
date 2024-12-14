@@ -1,10 +1,2 @@
 ﻿  UDPServer.cpp
-C:\Users\xcana\Documents\GitHub\MultiplayerVideogame\UDPServer\Character.hpp(21,3): warning C4091: 'typedef ': ignored on left of 'UserCharacter::Character' when no variable is declared
-C:\Users\xcana\Documents\GitHub\MultiplayerVideogame\UDPServer\Warrior.hpp(27,3): warning C4091: 'typedef ': ignored on left of 'UserCharacter::Warrior' when no variable is declared
-C:\Users\xcana\Documents\GitHub\MultiplayerVideogame\UDPServer\Mage.hpp(27,3): warning C4091: 'typedef ': ignored on left of 'UserCharacter::Mage' when no variable is declared
-C:\Users\xcana\Documents\GitHub\MultiplayerVideogame\UDPServer\Priest.hpp(27,3): warning C4091: 'typedef ': ignored on left of 'UserCharacter::Priest' when no variable is declared
-C:\Users\xcana\Documents\GitHub\MultiplayerVideogame\UDPServer\VideoGame.hpp(18,3): warning C4091: 'typedef ': ignored on left of 'ServerVideoGame::VideoGame' when no variable is declared
-C:\Users\xcana\Documents\GitHub\MultiplayerVideogame\UDPServer\UDPServer.cpp(61,17): warning C4101: 'pDataArray': unreferenced local variable
-C:\Users\xcana\Documents\GitHub\MultiplayerVideogame\UDPServer\UDPServer.cpp(62,17): warning C4101: 'dwThreadIdArray': unreferenced local variable
-C:\Users\xcana\Documents\GitHub\MultiplayerVideogame\UDPServer\UDPServer.cpp(161,15): warning C4101: 'videoGame': unreferenced local variable
   UDPServer.vcxproj -> C:\Users\xcana\Documents\GitHub\MultiplayerVideogame\x64\Debug\UDPServer.exe

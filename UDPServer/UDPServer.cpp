@@ -13,11 +13,21 @@
 
 #define MAX_THREADS 5
 
-using namespace std;
 using namespace ServerVideoGame;
 
 HANDLE       serverFun (PDataPacket clientPacket, SOCKET s, sockaddr_in* client_addr, int i, string prefix);
 DWORD WINAPI threadFun (LPVOID param);
+
+
+
+//typedef void (*Function) (map < string, Variant >& parameters);
+//
+//using Function_Map = map < string, Function >;
+//
+//Function_Map functions =
+//{
+//    {}
+//};
 
 
 
@@ -57,10 +67,10 @@ int main()
 
     std::cout << "Server master: socket bound to address: " << address << " port: " << my_addr.sin_port << std::endl << std::endl;
 
-    PDataPacket packet = new DataPacket();
-    PDataPacket pDataArray[MAX_THREADS];      //pointers to the data passed as params for each thread so that they can run the function with the params
-    DWORD       dwThreadIdArray[MAX_THREADS]; //ids of threads as a long
-    HANDLE      hThreadArray[MAX_THREADS];    //handlers of threads
+                     PDataPacket packet = new DataPacket();
+    [[maybe_unused]] PDataPacket pDataArray[MAX_THREADS];      //pointers to the data passed as params for each thread so that they can run the function with the params
+    [[maybe_unused]] DWORD       dwThreadIdArray[MAX_THREADS]; //ids of threads as a long
+                     HANDLE      hThreadArray[MAX_THREADS];    //handlers of threads
     
     int i = 0;
     while (i < MAX_THREADS)
@@ -85,7 +95,7 @@ int main()
     for (int i = 0; i < MAX_THREADS; i++)
         CloseHandle(hThreadArray[i]);
 
-    std::cout << "Server master: cleaning up and returning" << endl;
+    std::cout << "Server master: cleaning up and returning" << std::endl;
     // cleanup
     closesocket(s);
     WSACleanup();
@@ -100,7 +110,7 @@ HANDLE serverFun(PDataPacket clientPacket, SOCKET s, sockaddr_in* client_addr, i
     //now we create a socket that uses IP (AF_INET) with UDP (SOCK_DGRAM, IPPROTO_UDP) 
     SOCKET s_new = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
     if (s_new == INVALID_SOCKET)
-        treatErrorExit(format("Server master: Thread[{}] socket creation error: ", i), s, -1);
+        treatErrorExit(std::format("Server master: Thread[{}] socket creation error: ", i), s, -1);
     
     std::cout << "Server master: socket created" << std::endl;
 
@@ -108,7 +118,7 @@ HANDLE serverFun(PDataPacket clientPacket, SOCKET s, sockaddr_in* client_addr, i
     sockaddr_in my_addr;
     PCSTR address = "127.0.0.1";
     if (!inet_pton(AF_INET, address, &(my_addr.sin_addr.s_addr))) // Replace with your desired IP address
-        treatErrorExit(format("Server master: Thread[{}] error converting IP in string to binary: ", i), s, -1);
+        treatErrorExit(std::format("Server master: Thread[{}] error converting IP in string to binary: ", i), s, -1);
 
     my_addr.sin_family = AF_INET;
     //store bytes in network format == big-endian
@@ -155,35 +165,27 @@ DWORD WINAPI threadFun(LPVOID param)
 
     // TODO: while () receive msgs, send them back
     PDataPacket packet = new DataPacket();
-    thInfo->setPrefix("Server thread (" + std::to_string(thInfo->getId()) + "):");
+    thInfo->prefix = "Server thread (" + std::to_string(thInfo->thread_id) + "):";
 
     // Creates the videogame for the Client
-    VideoGame videoGame;
+    [[maybe_unused]] VideoGame videoGame;
 
     bool serve = true;
     while (serve)
     {
-        std::cout << "Server thread (" << thInfo->getId() << ") ready to recv" << std::endl;
+        std::cout << "Server thread (" << thInfo->thread_id << ") ready to recv" << std::endl;
 
         // receive the packet and write its data to the packet struct, from the address addr with a specific length
         sockaddr_in client_addr;
-        recvfromMsg(thInfo->getSocket(), &client_addr, packet, thInfo->getPrefix());
+        recvfromMsg(thInfo->s, &client_addr, packet, thInfo->prefix);
 
         DataPacket clientPacket = (DataPacket)*packet;
 
         //THREAD BEHAVIOUR
 
-        // Exit Game
-        /*cout << "ClientPacket: " << clientPacket << endl;
-        cout << "ClientPacket: " << clientPacket.getFunction() << endl;
-        cout << "Serve: "        << serve << endl;
-        if (clientPacket.getFunction().compare("exitGame"))
-            videoGame.exitGame(serve);
-        cout << "Serve: " << serve << endl;*/
-        
         Character* character;
 
-        switch (clientPacket.getFunction())
+        switch (clientPacket.function)
         {
         case EXIT_GAME:
             serve = false;
@@ -202,23 +204,24 @@ DWORD WINAPI threadFun(LPVOID param)
             break;
         }
 
-        cout << endl;
+        std::cout << std::endl;
     }
-    
+    std::cout << "Sale del bucle" << std::endl;
     // TODO: close server thread with last msg
     
     // TODO:cleanup of thread
     if (thInfo != NULL)
     {
+        std::cout << "Se mete en cleanUp" << std::endl;
         if (!HeapFree(GetProcessHeap(), 0, thInfo))
-            cout << "Fallo en el HeapFree" << endl;
-        
+            std::cout << "Fallo en el HeapFree" << std::endl;
+        std::cout << "Hace HeapFree" << std::endl;
         thInfo = NULL;
     }
-    
+    std::cout << "Antes de deletear" << std::endl;
     delete thInfo;
     thInfo = NULL;
-    
+    std::cout << "Después de deletear" << std::endl;
     return 0;
 }
 

@@ -2,7 +2,6 @@
 #pragma once
 #include <time.h>
 #include <Windows.h>
-#include <iostream>
 #include <ostream>
 #include <WinSock2.h>
 #include <WS2tcpip.h>
@@ -11,10 +10,15 @@
 #include <map>
 #include <assert.h>
 
+// JSON
+#include <nlohmann/json.hpp>
+#include <iostream>
+
 #define MSG_SIZE 256
 
 //using Parameter = std::variant<int>;
-using string    = std::string;
+using string = std::string;
+using json   = nlohmann::json;
 
 
 
@@ -31,10 +35,10 @@ enum functionType
 
 typedef class DataPacket
 {
-    private:
-        int                         client_id;
-        int                         sequence;
-        functionType                function;
+    public:
+        int          client_id;
+        int          sequence;
+        functionType function;
         //std::map<string, Parameter> parameters;
     
     public:
@@ -50,36 +54,11 @@ typedef class DataPacket
         /*~DataPacket() {
             delete parameters;
         }*/
-
-        int getClient()
-        {
-            return client_id;
-        }
-        int getSequence()
-        {
-            return sequence;
-        }
-        functionType getFunction()
-        {
-            return function;
-        }
-
-        /*json to_json()
-        {
-            json j;
-            j["client_id"] = client_id;
-            j["parameters"] = parameters.to_json();
-            return j;
-        }
-        DataPacket from_json(json j)
-        {
-            client_id = j["client_id"];
-        }*/
 } *PDataPacket;
 
 typedef class ThreadInfo
 {
-    private:
+    public:
         int    thread_id;
         SOCKET s;
         string prefix;
@@ -96,23 +75,6 @@ typedef class ThreadInfo
         ~ThreadInfo()
         {
             closesocket(s);
-        }
-
-        int getId()
-        {
-            return thread_id;
-        }
-        SOCKET getSocket()
-        {
-            return s;
-        }
-        string getPrefix()
-        {
-            return prefix;
-        }
-        void setPrefix(string _prefix)
-        {
-            prefix = _prefix;
         }
 } *PThreadInfo;
 
@@ -131,6 +93,14 @@ void treatErrorExit       (const std::string msg, SOCKET s, int error);
 int  udpCommonSocketSetup (SOCKET s, PCSTR address, u_short port, sockaddr_in* addr);
 
 int  udpServerSocketSetup (SOCKET s, PCSTR address, u_short port, sockaddr_in* addr);
+
+
+
+// JSON
+
+void to_json(json& j, const DataPacket& d);
+
+void from_json(const json& j, DataPacket& p);
 
 
 

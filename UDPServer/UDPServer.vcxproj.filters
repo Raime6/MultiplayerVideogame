@@ -39,4 +39,7 @@
       <Filter>Archivos de encabezado\Characters</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
 </Project>

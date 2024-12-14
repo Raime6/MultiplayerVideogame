@@ -15,7 +15,7 @@
 
 std::ostream& operator << (std::ostream& os, DataPacket& dp)
 {
-    return (os << "DataPacket{client: " << dp.getClient() << " seq: " << dp.getSequence() << " func: " << dp.getFunction() << " }");
+    return (os << "DataPacket{client: " << dp.client_id << " seq: " << dp.sequence << " func: " << dp.function << " }");
 }
 
 //will print msg with WSAGetLastError, then closesocket
@@ -76,18 +76,48 @@ int udpServerSocketSetup(SOCKET s_server, PCSTR address, u_short port, sockaddr_
 
 
 
+// JSON
+
+//these functions should be visible to the library and it will call them automagically!
+void to_json(json& j, const DataPacket& d)
+{
+    j = json
+    {
+        {"client_id", d.client_id},
+        {"sequence" , d.sequence},
+        {"function" , d.function},
+    };
+}
+
+//create Datapacket from json object
+void from_json(const json& j, DataPacket& d)
+{
+    j.at("client_id").get_to(d.client_id);
+    j.at("sequence") .get_to(d.sequence);
+    j.at("function") .get_to(d.function);
+}
+
+
 
 //UDP calls
 
 //performs sendto, assuming all required WinSock2 previous calls were succesfull
 int sendtoMsg(SOCKET s, sockaddr_in* dest_addr, PDataPacket packet, std::string prefix)
 {
+    // conversion: DataPacket -> json invoking to_json
+    json j = *packet;
+    
+    std::cout << j.dump() << std::endl; // also std::cout << j << std::endl;
+
+    char json_text[MSG_SIZE];
+    memcpy(json_text, j.dump().c_str(), MSG_SIZE); // deep copy of data to buffer that will be sent
+
     //now we just send the data through the socket
     //we make the casting to char* because it expects data as just chars, last param 0 is for flags that we don't need
-    int result = sendto(s, (char*)packet, sizeof(DataPacket), 0, (SOCKADDR*)dest_addr, sizeof(SOCKADDR));
+    int result = sendto(s, json_text, sizeof(json_text), 0, (SOCKADDR*)dest_addr, sizeof(SOCKADDR));
     assert(result != SOCKET_ERROR);
 
-    std::cout << prefix << " succesfully sent msg: " << *packet << std::endl;
+    std::cout << prefix << " succesfully sent msg: " << *packet << std::endl << std::endl;
 
     return result;
 }
@@ -96,14 +126,21 @@ int sendtoMsg(SOCKET s, sockaddr_in* dest_addr, PDataPacket packet, std::string 
 int recvfromMsg(SOCKET s, sockaddr_in* sender_addr, PDataPacket response, std::string prefix)
 {
     //receive response from Server
-    //DataPacket response;
-    int fromlen = sizeof(SOCKADDR);
+    char buffer[MSG_SIZE];
+    int  fromlen = sizeof(SOCKADDR);
     
     //recvfrom addr is ALWAYS an out param 
-    int result = recvfrom(s, (char*)response, sizeof(DataPacket), 0, (SOCKADDR*)sender_addr, &fromlen);
+    int result = recvfrom(s, buffer, sizeof(buffer), 0, (SOCKADDR*)sender_addr, &fromlen);
     assert(result != SOCKET_ERROR);
 
-    std::cout << prefix << " succesfully received: " << *response << std::endl;
+    json j2   = json::parse(buffer);
+
+    std::cout << j2.dump() << std::endl;
+
+    //conversion json -> DataPacket invoking from_json
+    *response = j2;
+
+    std::cout << prefix << " succesfully received: " << *response << std::endl << std::endl;
 
     return result;
 }

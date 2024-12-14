@@ -5,7 +5,7 @@
 
 namespace UserCharacter
 {
-	typedef class Priest : public UserCharacter::Character
+	class Priest : public UserCharacter::Character
 	{
 
 	public:

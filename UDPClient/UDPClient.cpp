@@ -14,7 +14,6 @@
 
 #define MAX_MSGS 4
 
-using namespace std;
 using namespace Interface;
 
 int obtainNewPort (SOCKET s, sockaddr_in* server_addr, int client, string prefix);
@@ -24,7 +23,7 @@ int obtainNewPort (SOCKET s, sockaddr_in* server_addr, int client, string prefix
 int main(int argc, char* argv[])
 {
     if (argc < 2) {
-        cout << "UDPClient usage: .\\UDPClient <id>" << endl;
+        std::cout << "UDPClient usage: .\\UDPClient <id>" << std::endl;
         ExitProcess(-1);
     }
 
@@ -61,25 +60,72 @@ int main(int argc, char* argv[])
     obtainNewPort(s, &server_addr, client, prefix);
 
     // Once the conexion is created, the Client creates de UI
-    UI ui;
-    int optionMainMenu = 0, optionSelectCharacter;
+    UI   ui;
+    int  optionMainMenu = 0;
+    bool serve          = true;
     
     // Main Menu
-    do
-    {
-        // Shows UI
-        optionMainMenu = ui.showMainMenu();
-        
+    while (serve)
+    {    
         // If User selects 1, shows SelectCharacer Menu, if it's 2, sends Datapack to close Thread in Server
-        if (optionMainMenu == 1)
-            optionSelectCharacter = ui.showSelectCharacter();
-        else if (optionMainMenu == 2)
+        switch (ui.showMainMenu())
         {
-            PDataPacket packet = new DataPacket(client, sequence, EXIT_GAME);
-            ++sequence;
-            sendtoMsg(s, &server_addr, packet, prefix);
+            case 1:
+                serve = false;
+                break;
+
+            case 2:
+                PDataPacket packet = new DataPacket(client, sequence, EXIT_GAME);
+                ++sequence;
+                sendtoMsg(s, &server_addr, packet, prefix);
+                break;
         }
-    } while (optionMainMenu < 1 || optionMainMenu > 2);
+    }
+
+    // Select Character
+    int          optionSelectCharacter = 0;
+    functionType charaterType;
+    
+    serve = true;
+    while (serve)
+    {
+        // 1: Create warrior, 2: Create mage, 3: Create priest
+        switch (ui.showSelectCharacter())
+        {
+        case 1:
+            charaterType = CREATE_WARRIOR;
+            serve = false;
+            break;
+
+        case 2:
+            charaterType = CREATE_MAGE;
+            serve = false;
+            break;
+
+        case 3:
+            charaterType = CREATE_PRIEST;
+            serve = false;
+            break;
+        }
+    }
+
+    PDataPacket packet = new DataPacket(client, sequence, charaterType);
+    ++sequence;
+    sendtoMsg(s, &server_addr, packet, prefix);
+
+    // New Game starts
+
+    serve = true;
+    while (serve)
+    {
+        // 1: Enter dungeon
+        switch (ui.showNewGameStart())
+        {
+        case 1:
+            serve = true;
+            break;
+        }
+    }
 
     /*PDataPacket packet   = new DataPacket(client, 0, "printHello");
     PDataPacket response = new DataPacket();
@@ -128,7 +174,7 @@ int obtainNewPort(SOCKET s, sockaddr_in* server_addr, int client, string prefix)
     PDataPacket response = new DataPacket();
     //will overwrite server_addr with the server addr with the new port, since the response msg in the server is sent through the new socket!
     sendtorecvfromMsg(s, server_addr, packet, response, prefix);
-    cout << endl;
+    std::cout << std::endl;
 
     return 0;
 }

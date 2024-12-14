@@ -9,7 +9,7 @@ using namespace UserCharacter;
 
 namespace ServerVideoGame
 {	
-	typedef class VideoGame
+	class VideoGame
 	{
 
 	public:

@@ -206,22 +206,22 @@ DWORD WINAPI threadFun(LPVOID param)
 
         std::cout << std::endl;
     }
-    std::cout << "Sale del bucle" << std::endl;
+
     // TODO: close server thread with last msg
     
     // TODO:cleanup of thread
     if (thInfo != NULL)
     {
-        std::cout << "Se mete en cleanUp" << std::endl;
-        if (!HeapFree(GetProcessHeap(), 0, thInfo))
-            std::cout << "Fallo en el HeapFree" << std::endl;
-        std::cout << "Hace HeapFree" << std::endl;
+        // Using HeapeFree close the thread but not the socket, so it's preferable to use delete as the destructor closes it
+        /*if (!HeapFree(GetProcessHeap(), 0, thInfo))
+            std::cout << "Fallo en el HeapFree" << std::endl;*/
+        std::cout << "Server thread (" << thInfo->thread_id << "): cleaning up and returning" << std::endl;
+        delete thInfo;
         thInfo = NULL;
     }
-    std::cout << "Antes de deletear" << std::endl;
-    delete thInfo;
-    thInfo = NULL;
-    std::cout << "Después de deletear" << std::endl;
+
+    
+
     return 0;
 }
 

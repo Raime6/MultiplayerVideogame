@@ -63,6 +63,7 @@ int main(int argc, char* argv[])
     UI   ui;
     int  optionMainMenu = 0;
     bool serve          = true;
+    bool exitGame       = false;
     
     // Main Menu
     while (serve)
@@ -78,6 +79,9 @@ int main(int argc, char* argv[])
                 PDataPacket packet = new DataPacket(client, sequence, EXIT_GAME);
                 ++sequence;
                 sendtoMsg(s, &server_addr, packet, prefix);
+
+                serve    = false;
+                exitGame = true;
                 break;
         }
     }
@@ -87,7 +91,7 @@ int main(int argc, char* argv[])
     functionType charaterType;
     
     serve = true;
-    while (serve)
+    while (serve && !exitGame)
     {
         // 1: Create warrior, 2: Create mage, 3: Create priest
         switch (ui.showSelectCharacter())

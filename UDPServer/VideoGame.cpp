@@ -4,9 +4,17 @@
 
 
 
+VideoGameUDP::VideoGame::VideoGame()
+{
+    character   = nullptr;
+    maxRooms    = 4;
+    currentRoom = 1;
+}
+
+
+
 bool VideoGameUDP::VideoGame::videoGameFun(int function)
 {
-    Character* character;
     bool       boolean = true;
 
     switch (function)
@@ -25,6 +33,9 @@ bool VideoGameUDP::VideoGame::videoGameFun(int function)
 
     case CREATE_PRIEST:
         character = new Priest();
+        break;
+
+    case RETURN_ROOMS:
         break;
     }
 

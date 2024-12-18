@@ -130,8 +130,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\UDPLib1\UI.cpp" />
     <ClCompile Include="UDPClient.cpp" />
+    <ClCompile Include="UI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UDPLib1\UDPLib1.vcxproj">

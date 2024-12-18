@@ -9,10 +9,15 @@ namespace VideoGameUDP
 {	
 	class VideoGame
 	{
+	public:
+
+		Character* character;
+		int        maxRooms;
+		int        currentRoom;
 
 	public:
 
-		VideoGame() = default;
+		VideoGame();
 		
 		bool videoGameFun(int);
 	};

@@ -83,18 +83,22 @@ void to_json(json& j, const DataPacket& d)
 {
     j = json
     {
-        {"client_id", d.client_id},
-        {"sequence" , d.sequence},
-        {"function" , d.function},
+        {"client_id"  , d.client_id},
+        {"sequence"   , d.sequence},
+        {"function"   , d.function},
+        {"currentRoom", d.currentRoom},
+        {"maxRooms"   , d.function}
     };
 }
 
 //create Datapacket from json object
 void from_json(const json& j, DataPacket& d)
 {
-    j.at("client_id").get_to(d.client_id);
-    j.at("sequence") .get_to(d.sequence);
-    j.at("function") .get_to(d.function);
+    j.at("client_id")  .get_to(d.client_id);
+    j.at("sequence")   .get_to(d.sequence);
+    j.at("function")   .get_to(d.function);
+    j.at("currentRoom").get_to(d.currentRoom);
+    j.at("maxRooms")   .get_to(d.maxRooms);
 }
 
 
@@ -114,8 +118,10 @@ int sendtoMsg(SOCKET s, sockaddr_in* dest_addr, PDataPacket packet, std::string 
 
     //now we just send the data through the socket
     //we make the casting to char* because it expects data as just chars, last param 0 is for flags that we don't need
+    std::cout << "Antes de enviar" << std::endl;
     int result = sendto(s, json_text, sizeof(json_text), 0, (SOCKADDR*)dest_addr, sizeof(SOCKADDR));
     assert(result != SOCKET_ERROR);
+    std::cout << "Después de enviar" << std::endl;
 
     std::cout << prefix << " succesfully sent msg: " << *packet << std::endl << std::endl;
 

@@ -8,7 +8,8 @@ namespace VideoGameUDP
 		STATE_EXIT_GAME,
 		STATE_MAIN_MENU,
 		STATE_SELECTION_CHARACTER,
-		STATE_NEW_GAME_START
+		STATE_NEW_GAME_START,
+		STATE_ROOM_SELECTION
 	};
 
 	
@@ -20,7 +21,7 @@ namespace VideoGameUDP
 
 		UI() = default;
 
-		clientGameState UIFun(clientGameState, functionType&);
+		clientGameState UIFun(PDataPacket, clientGameState, functionType&);
 		
 		void errorMessage();
 
@@ -35,5 +36,8 @@ namespace VideoGameUDP
 
 		// NEW GAME
 		int showNewGameStart();
+
+		// DUNGEON INTERFACE
+		int showDungeonInterface(int, int);
 	};
 }

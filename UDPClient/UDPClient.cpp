@@ -67,16 +67,30 @@ int main(int argc, char* argv[])
     
     // =================================================================================================================================
     // CLIENT BEHAVIOUR
+    
+    PDataPacket response = nullptr;
+
     while (serve)
     { 
         functionType function = NOT_FUNCTION;
 
-        gameState = ui.UIFun(gameState, function);
+        gameState = ui.UIFun(response, gameState, function);
 
         if (function != NOT_FUNCTION)
         {
             PDataPacket packet = new DataPacket(client, sequence, function);
-            sendtoMsg(s, &server_addr, packet, prefix);
+
+            switch (function)
+            {
+            case RETURN_ROOMS:
+                    sendtorecvfromMsg(s, &server_addr, packet, response, prefix);
+                    break;
+                
+                default:
+                    sendtoMsg(s, &server_addr, packet, prefix); 
+                    break;
+            }
+
             ++sequence;
         }
 

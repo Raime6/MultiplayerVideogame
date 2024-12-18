@@ -4,7 +4,7 @@
 
 
 
-VideoGameUDP::clientGameState VideoGameUDP::UI::UIFun(clientGameState gameState, functionType& function)
+VideoGameUDP::clientGameState VideoGameUDP::UI::UIFun(PDataPacket response, clientGameState gameState, functionType& function)
 {
 	switch (gameState)
 	{
@@ -51,13 +51,34 @@ VideoGameUDP::clientGameState VideoGameUDP::UI::UIFun(clientGameState gameState,
 			switch (showNewGameStart())
 			{
 				case 1:
-					gameState = STATE_NEW_GAME_START;
+					gameState = STATE_ROOM_SELECTION;
+					function  = RETURN_ROOMS;
 					break;
 
 				case 2:
 					gameState = STATE_SELECTION_CHARACTER;
-					function = NOT_FUNCTION;
+					function  = NOT_FUNCTION;
 					break;
+			}
+			break;
+
+		case STATE_ROOM_SELECTION:
+			switch (showDungeonInterface(response->minRooms, response->maxRooms))
+			{
+			case 1:
+				gameState = STATE_ROOM_SELECTION;
+				function  = NOT_FUNCTION;
+				break;
+
+			case 2:
+				gameState = STATE_ROOM_SELECTION;
+				function  = NOT_FUNCTION;
+				break;
+			
+			case 3:
+				gameState = STATE_MAIN_MENU;
+				function  = NOT_FUNCTION;
+				break;
 			}
 			break;
 	}
@@ -163,4 +184,23 @@ int VideoGameUDP::UI::showNewGameStart()
 	std::cout << std::endl;
 
 	return UI::selectOptionMenu(1, 2);
+}
+
+
+
+// DUNGEON INTERFACE
+
+int VideoGameUDP::UI::showDungeonInterface(int currentRoom, int maxRoom)
+{
+	std::cout << "========================================================================================================================" << std::endl << std::endl;
+
+	std::cout << "Room " << currentRoom << " / " << maxRoom << std::endl << std::endl;
+	
+	std::cout << "Select an option:"      << std::endl;
+	std::cout << "1. Enter the room"      << std::endl;
+	std::cout << "2. Enter the shop"      << std::endl;
+	std::cout << "3. Return to Main Menu" << std::endl;
+	std::cout << std::endl;
+
+	return UI::selectOptionMenu(1, 3);
 }

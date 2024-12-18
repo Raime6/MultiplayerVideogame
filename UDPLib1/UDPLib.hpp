@@ -5,8 +5,6 @@
 #include <ostream>
 #include <WinSock2.h>
 #include <WS2tcpip.h>
-#include <string>
-#include <variant>
 #include <map>
 #include <assert.h>
 
@@ -28,7 +26,8 @@ enum functionType
     EXIT_GAME,
     CREATE_WARRIOR,
     CREATE_MAGE,
-    CREATE_PRIEST
+    CREATE_PRIEST,
+    RETURN_ROOMS
 };
 
 
@@ -39,16 +38,28 @@ typedef class DataPacket
         int          client_id;
         int          sequence;
         functionType function;
-        //std::map<string, Parameter> parameters;
+        
+        // RETURN_ROOMS
+        int          currentRoom;
+        int          maxRooms;
     
     public:
         DataPacket() {}
+        
         DataPacket(int _client_id, int _sequence, functionType _function)
         {
             client_id = _client_id;
             sequence  = _sequence;
             function  = _function;
-            //parameters = new map<string, Parameter>();
+            
+            currentRoom = 0;
+            maxRooms    = 0;
+        }
+
+        DataPacket(int _client_id, int _sequence, functionType _function, int _currentRoom, int _maxRooms) : DataPacket(_client_id, _sequence, _function)
+        {
+            currentRoom = _currentRoom;
+            maxRooms    = _maxRooms;
         }
 
         /*~DataPacket() {

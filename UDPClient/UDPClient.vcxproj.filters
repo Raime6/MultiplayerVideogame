@@ -18,7 +18,7 @@
     <ClCompile Include="UDPClient.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="..\UDPLib1\UI.cpp">
+    <ClCompile Include="UI.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>

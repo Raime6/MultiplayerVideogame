@@ -175,6 +175,14 @@ DWORD WINAPI threadFun(LPVOID param)
         //THREAD BEHAVIOUR
         serve = videoGame.videoGameFun(clientPacket.function);
 
+        switch (clientPacket.function)
+        {
+            case RETURN_ROOMS:
+                PDataPacket packet = new DataPacket(clientPacket.client_id, clientPacket.sequence, clientPacket.function, videoGame.currentRoom, videoGame.maxRooms);
+                sendtoMsg(thInfo->s, &client_addr, packet, thInfo->prefix);
+                break;
+        }
+
         std::cout << std::endl;
     }
     // =================================================================================================================================

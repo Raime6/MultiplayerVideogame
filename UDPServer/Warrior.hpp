@@ -3,9 +3,9 @@
 
 #include "Character.hpp"
 
-namespace UserCharacter
+namespace VideoGameUDP
 {
-	class Warrior: public UserCharacter::Character
+	class Warrior: public VideoGameUDP::Character
 	{
 
 	public:
@@ -23,6 +23,5 @@ namespace UserCharacter
 		void Ability2() override {}
 		void Ability3() override {}
 		void Ability4() override {}
-		void print() override { std::cout << "Hola, soy un Warrior" << std::endl; }
 	};
 }

@@ -3,9 +3,9 @@
 
 #include "Character.hpp"
 
-namespace UserCharacter
+namespace VideoGameUDP
 {
-	class Mage : public UserCharacter::Character
+	class Mage : public VideoGameUDP::Character
 	{
 
 	public:
@@ -13,8 +13,8 @@ namespace UserCharacter
 		// Builder
 		Mage()
 		{
-			health = 7;
-			attack = 5;
+			health  = 7;
+			attack  = 5;
 			defense = 0.2f;
 		}
 
@@ -23,6 +23,5 @@ namespace UserCharacter
 		void Ability2() override {}
 		void Ability3() override {}
 		void Ability4() override {}
-		void print() override { std::cout << "Hola, soy un Mage" << std::endl; }
 	};
 }

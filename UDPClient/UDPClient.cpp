@@ -14,7 +14,7 @@
 
 #define MAX_MSGS 4
 
-using namespace Interface;
+using namespace VideoGameUDP;
 
 int obtainNewPort (SOCKET s, sockaddr_in* server_addr, int client, string prefix);
 
@@ -58,102 +58,32 @@ int main(int argc, char* argv[])
     string prefix = "Client:";
     int sequence = 0;
     obtainNewPort(s, &server_addr, client, prefix);
+    sequence++;
 
     // Once the conexion is created, the Client creates de UI
-    UI   ui;
-    int  optionMainMenu = 0;
-    bool serve          = true;
-    bool exitGame       = false;
+    UI              ui;
+    bool            serve     = true;
+    clientGameState gameState = STATE_MAIN_MENU; // Determines de state of the Client game (Ej: 0 - exit game, 1 - character selection, etc.)
     
-    // Main Menu
+    // =================================================================================================================================
+    // CLIENT BEHAVIOUR
     while (serve)
-    {    
-        // If User selects 1, shows SelectCharacer Menu, if it's 2, sends Datapack to close Thread in Server
-        switch (ui.showMainMenu())
+    { 
+        functionType function = NOT_FUNCTION;
+
+        gameState = ui.UIFun(gameState, function);
+
+        if (function != NOT_FUNCTION)
         {
-            case 1:
-                serve = false;
-                break;
-
-            case 2:
-                PDataPacket packet = new DataPacket(client, sequence, EXIT_GAME);
-                ++sequence;
-                sendtoMsg(s, &server_addr, packet, prefix);
-
-                serve    = false;
-                exitGame = true;
-                break;
+            PDataPacket packet = new DataPacket(client, sequence, function);
+            sendtoMsg(s, &server_addr, packet, prefix);
+            ++sequence;
         }
-    }
 
-    // Select Character
-    int          optionSelectCharacter = 0;
-    functionType charaterType;
-    
-    serve = true;
-    while (serve && !exitGame)
-    {
-        // 1: Create warrior, 2: Create mage, 3: Create priest
-        switch (ui.showSelectCharacter())
-        {
-        case 1:
-            charaterType = CREATE_WARRIOR;
+        if (gameState == STATE_EXIT_GAME)
             serve = false;
-            break;
-
-        case 2:
-            charaterType = CREATE_MAGE;
-            serve = false;
-            break;
-
-        case 3:
-            charaterType = CREATE_PRIEST;
-            serve = false;
-            break;
-        }
     }
-
-    PDataPacket packet = new DataPacket(client, sequence, charaterType);
-    ++sequence;
-    sendtoMsg(s, &server_addr, packet, prefix);
-
-    // New Game starts
-
-    serve = true;
-    while (serve)
-    {
-        // 1: Enter dungeon
-        switch (ui.showNewGameStart())
-        {
-        case 1:
-            serve = true;
-            break;
-        }
-    }
-
-    /*PDataPacket packet   = new DataPacket(client, 0, "printHello");
-    PDataPacket response = new DataPacket();
-    
-    sendtoMsg(s, &server_addr, packet, prefix);*/
-
-    //for (int i = 0; i < MAX_MSGS; i++) {
-
-    //    DataPacket packet(client, i, SHOWMAINMENU, nullptr);
-    //    if (i == MAX_MSGS - 1)
-    //        packet.endServer = true;
-
-    //    sendtoMsg(s, &server_addr, &packet, prefix);
-
-    //    PDataPacket response = new DataPacket();
-
-    //    string strMsg = string(packet.msg);
-    //    if (strMsg.compare(0, 12, "Close_Server")) { //compare returns 0 when equal, we compare just the desired length
-    //        //receive response from Server
-    //        recvfromMsg(s, &server_addr, response, prefix);
-    //        cout << endl;
-    //    }
-
-    //}
+    // =================================================================================================================================
 
     std::cout << "Client finishing..." << std::endl;
 

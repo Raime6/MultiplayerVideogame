@@ -131,6 +131,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="UDPServer.cpp" />
+    <ClCompile Include="VideoGame.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UDPLib1\UDPLib1.vcxproj">

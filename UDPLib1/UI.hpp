@@ -1,8 +1,18 @@
 
 #pragma once
 
-namespace Interface
+namespace VideoGameUDP
 {
+	enum clientGameState
+	{
+		STATE_EXIT_GAME,
+		STATE_MAIN_MENU,
+		STATE_SELECTION_CHARACTER,
+		STATE_NEW_GAME_START
+	};
+
+	
+
 	class UI
 	{
 
@@ -10,7 +20,12 @@ namespace Interface
 
 		UI() = default;
 
-		int  selectOptionMenu();
+		clientGameState UIFun(clientGameState, functionType&);
+		
+		void errorMessage();
+
+		// Save Player's option
+		int selectOptionMenu(int, int);
 
 		// MAIN MENU
 		int showMainMenu();

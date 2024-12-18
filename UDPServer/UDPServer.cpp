@@ -13,21 +13,10 @@
 
 #define MAX_THREADS 5
 
-using namespace ServerVideoGame;
+using namespace VideoGameUDP;
 
 HANDLE       serverFun (PDataPacket clientPacket, SOCKET s, sockaddr_in* client_addr, int i, string prefix);
 DWORD WINAPI threadFun (LPVOID param);
-
-
-
-//typedef void (*Function) (map < string, Variant >& parameters);
-//
-//using Function_Map = map < string, Function >;
-//
-//Function_Map functions =
-//{
-//    {}
-//};
 
 
 
@@ -170,6 +159,8 @@ DWORD WINAPI threadFun(LPVOID param)
     // Creates the videogame for the Client
     [[maybe_unused]] VideoGame videoGame;
 
+    // =================================================================================================================================
+    // SERVER BEHAVIOUR
     bool serve = true;
     while (serve)
     {
@@ -182,45 +173,19 @@ DWORD WINAPI threadFun(LPVOID param)
         DataPacket clientPacket = (DataPacket)*packet;
 
         //THREAD BEHAVIOUR
-
-        Character* character;
-
-        switch (clientPacket.function)
-        {
-        case EXIT_GAME:
-            serve = false;
-            break;
-
-        case CREATE_WARRIOR:
-            character = new Warrior();
-            break;
-
-        case CREATE_MAGE:
-            character = new Mage();
-            break;
-
-        case CREATE_PRIEST:
-            character = new Priest();
-            break;
-        }
+        serve = videoGame.videoGameFun(clientPacket.function);
 
         std::cout << std::endl;
     }
-
-    // TODO: close server thread with last msg
+    // =================================================================================================================================
     
     // TODO:cleanup of thread
     if (thInfo != NULL)
     {
-        // Using HeapeFree close the thread but not the socket, so it's preferable to use delete as the destructor closes it
-        /*if (!HeapFree(GetProcessHeap(), 0, thInfo))
-            std::cout << "Fallo en el HeapFree" << std::endl;*/
         std::cout << "Server thread (" << thInfo->thread_id << "): cleaning up and returning" << std::endl;
         delete thInfo;
         thInfo = NULL;
     }
-
-    
 
     return 0;
 }

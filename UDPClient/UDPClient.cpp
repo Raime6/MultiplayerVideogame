@@ -68,7 +68,7 @@ int main(int argc, char* argv[])
     // =================================================================================================================================
     // CLIENT BEHAVIOUR
     
-    PDataPacket response = nullptr;
+    PDataPacket response = new DataPacket();
 
     while (serve)
     { 
@@ -80,16 +80,10 @@ int main(int argc, char* argv[])
         {
             PDataPacket packet = new DataPacket(client, sequence, function);
 
-            switch (function)
-            {
-            case RETURN_ROOMS:
-                    sendtorecvfromMsg(s, &server_addr, packet, response, prefix);
-                    break;
-                
-                default:
-                    sendtoMsg(s, &server_addr, packet, prefix); 
-                    break;
-            }
+            if(function == RETURN_ROOMS || function == GENERATE_SHOP)
+                sendtorecvfromMsg(s, &server_addr, packet, response, prefix);
+            else
+                sendtoMsg(s, &server_addr, packet, prefix);
 
             ++sequence;
         }

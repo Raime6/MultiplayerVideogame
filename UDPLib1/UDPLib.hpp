@@ -27,7 +27,19 @@ enum functionType
     CREATE_WARRIOR,
     CREATE_MAGE,
     CREATE_PRIEST,
-    RETURN_ROOMS
+    RETURN_ROOMS,
+    GENERATE_SHOP
+};
+
+
+
+enum shopItemType
+{
+    HEAL_POTION,
+    KEY,
+    STRENGTH_FLASK,
+    VIGOR_FLASK,
+    ENDURANCE_FLASK
 };
 
 
@@ -40,26 +52,27 @@ typedef class DataPacket
         functionType function;
         
         // RETURN_ROOMS
-        int          currentRoom;
-        int          maxRooms;
+        int          currentRoom = 0;
+        int          maxRooms    = 0;
+
+        // SHOP
+        shopItemType shopItems[3];
+        int          shopItemCosts[5] = {10, 5, 7, 7, 7};
     
     public:
         DataPacket() {}
         
         DataPacket(int _client_id, int _sequence, functionType _function)
         {
-            client_id = _client_id;
-            sequence  = _sequence;
-            function  = _function;
-            
-            currentRoom = 0;
-            maxRooms    = 0;
+            client_id      = _client_id;
+            sequence       = _sequence;
+            function       = _function;
         }
 
-        DataPacket(int _client_id, int _sequence, functionType _function, int _currentRoom, int _maxRooms) : DataPacket(_client_id, _sequence, _function)
+        DataPacket(int _client_id, int _sequence, functionType _function, int _currentRoom, int _maxRoom) : DataPacket(_client_id, _sequence, _function)
         {
             currentRoom = _currentRoom;
-            maxRooms    = _maxRooms;
+            maxRooms    = _maxRoom;
         }
 
         /*~DataPacket() {

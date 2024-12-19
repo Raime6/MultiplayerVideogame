@@ -9,7 +9,8 @@ namespace VideoGameUDP
 		STATE_MAIN_MENU,
 		STATE_SELECTION_CHARACTER,
 		STATE_NEW_GAME_START,
-		STATE_ROOM_SELECTION
+		STATE_ROOM_SELECTION,
+		STATE_SHOP
 	};
 
 	
@@ -39,5 +40,8 @@ namespace VideoGameUDP
 
 		// DUNGEON INTERFACE
 		int showDungeonInterface(int, int);
+
+		// SHOP INTERFACE
+		int showShopInterface(shopItemType*, int*);
 	};
 }

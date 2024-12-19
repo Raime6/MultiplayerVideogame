@@ -1,2 +1,6 @@
 C:\Users\xcana\Documents\GitHub\MultiplayerVideogame\UDPClient\x64\Debug\UDPClient.vcxproj.AssemblyReference.cache
 C:\Users\xcana\Documents\GitHub\MultiplayerVideogame\UDPClient\x64\Debug\UDPClient.vcxproj.Up2Date
+C:\Users\Alumno\Downloads\MultiplayerVideogame-main\UDPClient\x64\Debug\UDPClient.vcxproj.AssemblyReference.cache
+C:\Users\Alumno\Downloads\MultiplayerVideogame-main\UDPClient\x64\Debug\UDPClient.vcxproj.Up2Date
+C:\Users\xcana\Downloads\MultiplayerVideogame-main\UDPClient\x64\Debug\UDPClient.vcxproj.AssemblyReference.cache
+C:\Users\xcana\Downloads\MultiplayerVideogame-main\UDPClient\x64\Debug\UDPClient.vcxproj.Up2Date

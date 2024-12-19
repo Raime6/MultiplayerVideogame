@@ -34,9 +34,6 @@ bool VideoGameUDP::VideoGame::videoGameFun(int function)
     case CREATE_PRIEST:
         character = new Priest();
         break;
-
-    case RETURN_ROOMS:
-        break;
     }
 
     return boolean;

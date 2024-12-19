@@ -10,7 +10,8 @@ namespace VideoGameUDP
 		STATE_SELECTION_CHARACTER,
 		STATE_NEW_GAME_START,
 		STATE_ROOM_SELECTION,
-		STATE_SHOP
+		STATE_SHOP,
+		STATE_ROOM
 	};
 
 	
@@ -44,5 +45,9 @@ namespace VideoGameUDP
 		// SHOP INTERFACE
 		int showShopInterface(shopItemType*, int*, int);
 		functionType shopItemFunction(shopItemType);
+
+		// ROOM
+		int showRoomFightInterface(std::string);
+		int showRoomChestInterface(int, int, int);
 	};
 }

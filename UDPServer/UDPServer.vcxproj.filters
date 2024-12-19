@@ -16,6 +16,9 @@
     <Filter Include="Archivos de encabezado\Characters">
       <UniqueIdentifier>{2eef10d7-68cf-4f36-906d-529b6fafd9f5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\Enemies">
+      <UniqueIdentifier>{a0aba763-6ed4-4fd0-b828-0bd3ed4418eb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="UDPServer.cpp">
@@ -40,6 +43,15 @@
     </ClInclude>
     <ClInclude Include="Priest.hpp">
       <Filter>Archivos de encabezado\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.hpp">
+      <Filter>Archivos de encabezado\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Slime.hpp">
+      <Filter>Archivos de encabezado\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Skeleton.hpp">
+      <Filter>Archivos de encabezado\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,2 +1,24 @@
-﻿  VideoGame.cpp
-  UDPServer.vcxproj -> C:\Users\xcana\Documents\GitHub\MultiplayerVideogame\x64\Debug\UDPServer.exe
+﻿  UDPServer.cpp
+C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.hpp(80,18): error C2143: error de sintaxis: falta ';' delante de '*'
+C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.hpp(80,9): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.hpp(80,48): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.hpp(97,107): error C2061: error de sintaxis: identificador '_Character'
+C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.hpp(101,13): error C2065: 'character': identificador no declarado
+C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.hpp(101,29): error C2065: '_character': identificador no declarado
+C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.hpp(102,29): error C2065: '_playerMoney': identificador no declarado
+C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.hpp(104,29): error C2065: '_roomGenerated': identificador no declarado
+C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPServer\UDPServer.cpp(183,42): error C2661: 'DataPacket::DataPacket': ninguna función sobrecargada acepta 8 argumentos
+C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPServer\UDPServer.cpp(188,42): error C2661: 'DataPacket::DataPacket': ninguna función sobrecargada acepta 8 argumentos
+C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPServer\UDPServer.cpp(193,42): error C2661: 'DataPacket::DataPacket': ninguna función sobrecargada acepta 8 argumentos
+C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPServer\UDPServer.cpp(198,42): error C2661: 'DataPacket::DataPacket': ninguna función sobrecargada acepta 8 argumentos
+C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPServer\UDPServer.cpp(203,42): error C2661: 'DataPacket::DataPacket': ninguna función sobrecargada acepta 8 argumentos
+  VideoGame.cpp
+C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.hpp(80,18): error C2143: error de sintaxis: falta ';' delante de '*'
+C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.hpp(80,9): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.hpp(80,48): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.hpp(97,107): error C2061: error de sintaxis: identificador '_Character'
+C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.hpp(101,13): error C2065: 'character': identificador no declarado
+C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.hpp(101,29): error C2065: '_character': identificador no declarado
+C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.hpp(102,29): error C2065: '_playerMoney': identificador no declarado
+C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.hpp(104,29): error C2065: '_roomGenerated': identificador no declarado
+  Generando código...

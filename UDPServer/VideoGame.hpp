@@ -15,7 +15,8 @@ namespace VideoGameUDP
 		int        maxRooms;
 		int        currentRoom;
 		int        playerMoney;
-		int        numKeys;
+		int        playerKeys;
+		roomType   roomGenerated;
 
 	public:
 
@@ -29,5 +30,8 @@ namespace VideoGameUDP
 		void increaseDmg();
 		void increaseHealth();
 		void increaseDef();
+		void generateRoom();
+		void openChest();
+		void leaveRoom();
 	};
 }

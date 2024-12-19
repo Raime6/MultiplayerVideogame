@@ -67,8 +67,8 @@ VideoGameUDP::clientGameState VideoGameUDP::UI::UIFun(PDataPacket response, clie
 		switch (showDungeonInterface(response->currentRoom, response->maxRooms))
 		{
 			case 1:
-				gameState = STATE_ROOM_SELECTION;
-				function  = NOT_FUNCTION;
+				gameState = STATE_ROOM;
+				function  = GENERATE_ROOM;
 				break;
 
 			case 2:
@@ -85,7 +85,7 @@ VideoGameUDP::clientGameState VideoGameUDP::UI::UIFun(PDataPacket response, clie
 
 	case STATE_SHOP:
 
-		switch (showShopInterface(response->shopItems, response->shopItemCosts, response->playerMoney))
+		switch (showShopInterface(response->shopItems, response->shopItemCosts, response->character->playerMoney))
 		{
 			case 1:
 				if (response->playerMoney < response->shopItemCosts[response->shopItems[0]])
@@ -106,7 +106,7 @@ VideoGameUDP::clientGameState VideoGameUDP::UI::UIFun(PDataPacket response, clie
 				{
 					gameState = STATE_SHOP;
 					function  = NOT_FUNCTION;
-					std::cout << "Not enough money!" << std::endl;
+					std::cout << "Not enough money!" << std::endl << std::endl;
 				}
 				else
 				{
@@ -120,7 +120,7 @@ VideoGameUDP::clientGameState VideoGameUDP::UI::UIFun(PDataPacket response, clie
 				{
 					gameState = STATE_SHOP;
 					function  = NOT_FUNCTION;
-					std::cout << "Not enough money!" << std::endl;
+					std::cout << "Not enough money!" << std::endl << std::endl;
 				}
 				else
 				{
@@ -134,6 +134,44 @@ VideoGameUDP::clientGameState VideoGameUDP::UI::UIFun(PDataPacket response, clie
 				function = NOT_FUNCTION;
 				break;
 		}
+		break;
+
+	case STATE_ROOM:
+		if (response->roomGenerated == ROOM_FIGHT)
+		{
+			std::cout << "Fight Room" << std::endl;
+			/*switch (showRoomFightInterface())
+			{
+
+			}*/
+		}
+		else
+		{
+			switch (showRoomChestInterface(response->character->playerKeys))
+			{
+				case 1:
+					if (response->playerKeys <= 0)
+					{
+						gameState = STATE_ROOM;
+						function  = NOT_FUNCTION;
+						std::cout << "You don't have any keys!" << std::endl << std::endl;
+					}
+					else
+					{
+						gameState = STATE_ROOM_SELECTION;
+						function  = OPEN_CHEST;
+						std::cout << "You found 10 gold!" << std::endl << std::endl;
+					}
+
+					break;
+
+				case 2:
+					gameState = STATE_ROOM_SELECTION;
+					function  = LEAVE_ROOM;
+					break;
+			}
+		}
+
 		break;
 	}
 
@@ -335,4 +373,45 @@ functionType VideoGameUDP::UI::shopItemFunction(shopItemType shopItem)
 	}
 
 	return function;
+}
+
+
+
+// ROOM
+
+// Fight
+
+int VideoGameUDP::UI::showRoomFightInterface(std::string enemyName, int enemyCurrentHealth, int enemyMaxHealth)
+{
+	std::cout << "========================================================================================================================" << std::endl << std::endl;
+
+	std::cout << "A " << enemyName << "is attacking!" << std::endl << std::endl;
+
+	std::cout << "HP: " << enemyCurrentHealth << "/" << enemyMaxHealth << std::endl << std::endl;
+
+	std::cout << "Choose an action:"    << std::endl;
+	std::cout << "1. Ability 1"         << std::endl;
+	std::cout << "2. Ability 2"         << std::endl;
+	std::cout << "3. Exit to Main Menu" << std::endl;
+	std::cout << std::endl;
+
+	return UI::selectOptionMenu(1, 3);
+}
+
+// Chest
+
+int VideoGameUDP::UI::showRoomChestInterface(int playerKeys)
+{
+	std::cout << "========================================================================================================================" << std::endl << std::endl;
+
+	std::cout << "You have found a locked chest!" << std::endl;
+
+	std::cout << "Your keys: " << playerKeys      << std::endl << std::endl;
+
+	std::cout << "Select an option:"              << std::endl;
+	std::cout << "1. Use a key to unlock it"      << std::endl;
+	std::cout << "2. Leave the room"              << std::endl;
+	std::cout << std::endl;
+
+	return UI::selectOptionMenu(1, 2);
 }

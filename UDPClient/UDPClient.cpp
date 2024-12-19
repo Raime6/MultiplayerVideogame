@@ -80,7 +80,7 @@ int main(int argc, char* argv[])
         {
             PDataPacket packet = new DataPacket(client, sequence, function);
 
-            if(function == RETURN_ROOMS || function == GENERATE_SHOP)
+            if(function == RETURN_ROOMS || function == GENERATE_SHOP || function == GENERATE_ROOM || function == LEAVE_ROOM || function == OPEN_CHEST)
                 sendtorecvfromMsg(s, &server_addr, packet, response, prefix);
             else
                 sendtoMsg(s, &server_addr, packet, prefix);

@@ -33,7 +33,10 @@ enum functionType
     ADD_KEY,
     INCREASE_STRENGHT,
     INCREASE_VIGOR,
-    INCREASE_ENDURANCE
+    INCREASE_ENDURANCE,
+    GENERATE_ROOM,
+    OPEN_CHEST,
+    LEAVE_ROOM
 };
 
 
@@ -49,6 +52,15 @@ enum shopItemType
 
 
 
+enum roomType
+{
+    ROOM_FIGHT,
+    ROOM_CHEST,
+    NOT_ROOM
+};
+
+
+
 typedef class DataPacket
 {
     public:
@@ -57,16 +69,20 @@ typedef class DataPacket
         functionType function;
         
         // RETURN_ROOMS
-        int          currentRoom = 0;
-        int          maxRooms    = 0;
+        int          currentRoom      = 0;
+        int          maxRooms         = 0;
 
         // SHOP
         shopItemType shopItems[3];
         int          shopItemCosts[5] = {10, 5, 7, 7, 7};
 
         // CHARACTER
-        int          playerMoney = 0;
-        int          numKeys     = 0;
+        Character*   character        = nullptr;
+        int          playerMoney      = 0;
+        int          playerKeys       = 0;
+
+        // ROOM
+        roomType     roomGenerated    = ROOM_FIGHT;
     
     public:
         DataPacket() {}
@@ -78,12 +94,14 @@ typedef class DataPacket
             function       = _function;
         }
 
-        DataPacket(int _client_id, int _sequence, functionType _function, int _currentRoom, int _maxRoom, int _playerMoney, int _numKeys) : DataPacket(_client_id, _sequence, _function)
+        DataPacket(int _client_id, int _sequence, functionType _function, int _currentRoom, int _maxRoom, _Character * character, int _playerMoney, int _numKeys, roomType _roomGenerated) : DataPacket(_client_id, _sequence, _function)
         {
-            currentRoom = _currentRoom;
-            maxRooms    = _maxRoom;
-            playerMoney = _playerMoney;
-            numKeys     = _numKeys;
+            currentRoom   = _currentRoom;
+            maxRooms      = _maxRoom;
+            character     = _character;
+            playerMoney   = _playerMoney;
+            playerKeys    = playerKeys;
+            roomGenerated = _roomGenerated;
         }
 
         /*~DataPacket() {

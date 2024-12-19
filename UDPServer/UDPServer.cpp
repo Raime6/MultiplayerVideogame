@@ -180,12 +180,12 @@ DWORD WINAPI threadFun(LPVOID param)
         switch (clientPacket.function)
         {
             case RETURN_ROOMS:
-                response = new DataPacket(clientPacket.client_id, clientPacket.sequence, clientPacket.function, videoGame.currentRoom, videoGame.maxRooms);
+                response = new DataPacket(clientPacket.client_id, clientPacket.sequence, clientPacket.function, videoGame.currentRoom, videoGame.maxRooms, videoGame.playerMoney, videoGame.numKeys);
                 sendtoMsg(thInfo->s, &client_addr, response, thInfo->prefix);
                 break;
 
             case GENERATE_SHOP:
-                response = new DataPacket(clientPacket.client_id, clientPacket.sequence, clientPacket.function);
+                response = new DataPacket(clientPacket.client_id, clientPacket.sequence, clientPacket.function, videoGame.currentRoom, videoGame.maxRooms, videoGame.playerMoney, videoGame.numKeys);
                 shopItemType arrayItems[5] = { HEAL_POTION, KEY, STRENGTH_FLASK, VIGOR_FLASK, ENDURANCE_FLASK };
                 for (int i = 0; i < 3; i++)
                 {

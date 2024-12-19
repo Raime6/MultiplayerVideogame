@@ -5,11 +5,16 @@ namespace VideoGameUDP
 {
 	class Character
 	{
-	protected:
+	public:
 
-		int   health  = 0;
-		int   attack  = 0;
-		float defense = 0;
+		int	  maxHealth     = 0;
+		int   health        = 0;
+		int   attack        = 0;
+		float defense       = 0;
+
+		bool healthBoosted  = false;
+		bool attackBoosted  = false;
+		bool defenseBoosted = false;
 
 	public:
 

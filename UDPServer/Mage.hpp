@@ -13,9 +13,10 @@ namespace VideoGameUDP
 		// Builder
 		Mage()
 		{
-			health  = 7;
-			attack  = 5;
-			defense = 0.2f;
+			maxHealth = 7;
+			health    = 7;
+			attack    = 5;
+			defense   = 0.2f;
 		}
 
 		// Methods

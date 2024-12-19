@@ -42,6 +42,7 @@ namespace VideoGameUDP
 		int showDungeonInterface(int, int);
 
 		// SHOP INTERFACE
-		int showShopInterface(shopItemType*, int*);
+		int showShopInterface(shopItemType*, int*, int);
+		functionType shopItemFunction(shopItemType);
 	};
 }

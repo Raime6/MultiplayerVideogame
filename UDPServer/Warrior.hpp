@@ -13,9 +13,10 @@ namespace VideoGameUDP
 		// Builder
 		Warrior()
 		{
-			health  = 12;
-			attack  = 2;
-			defense = 0.7f;
+			maxHealth = 12;
+			health    = 12;
+			attack    = 2;
+			defense   = 0.7f;
 		}
 
 		// Methods

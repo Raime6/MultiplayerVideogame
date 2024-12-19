@@ -11,54 +11,54 @@ VideoGameUDP::clientGameState VideoGameUDP::UI::UIFun(PDataPacket response, clie
 	case STATE_MAIN_MENU:
 		switch (showMainMenu())
 		{
-		case 1:
-			gameState = STATE_SELECTION_CHARACTER;
-			break;
+			case 1:
+				gameState = STATE_SELECTION_CHARACTER;
+				break;
 
-		case 2:
-			gameState = STATE_EXIT_GAME;
-			function  = EXIT_GAME;
-			break;
+			case 2:
+				gameState = STATE_EXIT_GAME;
+				function  = EXIT_GAME;
+				break;
 		}
 		break;
 
 	case STATE_SELECTION_CHARACTER:
 		switch (showSelectCharacter())
 		{
-		case 1:
-			gameState = STATE_NEW_GAME_START;
-			function  = CREATE_WARRIOR;
-			break;
+			case 1:
+				gameState = STATE_NEW_GAME_START;
+				function  = CREATE_WARRIOR;
+				break;
 
-		case 2:
-			gameState = STATE_NEW_GAME_START;
-			function  = CREATE_MAGE;
-			break;
+			case 2:
+				gameState = STATE_NEW_GAME_START;
+				function  = CREATE_MAGE;
+				break;
 
-		case 3:
-			gameState = STATE_NEW_GAME_START;
-			function  = CREATE_PRIEST;
-			break;
+			case 3:
+				gameState = STATE_NEW_GAME_START;
+				function  = CREATE_PRIEST;
+				break;
 
-		case 4:
-			gameState = STATE_MAIN_MENU;
-			function  = NOT_FUNCTION;
-			break;
+			case 4:
+				gameState = STATE_MAIN_MENU;
+				function  = NOT_FUNCTION;
+				break;
 		}
 		break;
 
 	case STATE_NEW_GAME_START:
 		switch (showNewGameStart())
 		{
-		case 1:
-			gameState = STATE_ROOM_SELECTION;
-			function  = RETURN_ROOMS;
-			break;
+			case 1:
+				gameState = STATE_ROOM_SELECTION;
+				function  = RETURN_ROOMS;
+				break;
 
-		case 2:
-			gameState = STATE_SELECTION_CHARACTER;
-			function  = NOT_FUNCTION;
-			break;
+			case 2:
+				gameState = STATE_SELECTION_CHARACTER;
+				function  = NOT_FUNCTION;
+				break;
 		}
 		break;
 
@@ -66,45 +66,73 @@ VideoGameUDP::clientGameState VideoGameUDP::UI::UIFun(PDataPacket response, clie
 
 		switch (showDungeonInterface(response->currentRoom, response->maxRooms))
 		{
-		case 1:
-			gameState = STATE_ROOM_SELECTION;
-			function  = NOT_FUNCTION;
-			break;
+			case 1:
+				gameState = STATE_ROOM_SELECTION;
+				function  = NOT_FUNCTION;
+				break;
 
-		case 2:
-			gameState = STATE_SHOP;
-			function  = GENERATE_SHOP;
-			break;
+			case 2:
+				gameState = STATE_SHOP;
+				function  = GENERATE_SHOP;
+				break;
 
-		case 3:
-			gameState = STATE_MAIN_MENU;
-			function  = NOT_FUNCTION;
-			break;
+			case 3:
+				gameState = STATE_MAIN_MENU;
+				function  = NOT_FUNCTION;
+				break;
 		}
 		break;
 
 	case STATE_SHOP:
 
-		switch (showShopInterface(response->shopItems, response->shopItemCosts))
+		switch (showShopInterface(response->shopItems, response->shopItemCosts, response->playerMoney))
 		{
-		case 1:
-			gameState = STATE_SHOP;
-			function  = NOT_FUNCTION;
-			break;
+			case 1:
+				if (response->playerMoney < response->shopItemCosts[response->shopItems[0]])
+				{
+					gameState = STATE_SHOP;
+					function  = NOT_FUNCTION;
+					std::cout << "Not enough money!" << std::endl;
+				}
+				else
+				{
+					gameState = STATE_ROOM_SELECTION;
+					function  = shopItemFunction(response->shopItems[0]);
+				}
+				break;
 
-		case 2:
-			gameState = STATE_SHOP;
-			function  = NOT_FUNCTION;
-			break;
+			case 2:
+				if (response->playerMoney < response->shopItemCosts[response->shopItems[1]])
+				{
+					gameState = STATE_SHOP;
+					function  = NOT_FUNCTION;
+					std::cout << "Not enough money!" << std::endl;
+				}
+				else
+				{
+					gameState = STATE_ROOM_SELECTION;
+					function  = shopItemFunction(response->shopItems[1]);
+				}
+				break;
 
-		case 3:
-			gameState = STATE_SHOP;
-			function  = NOT_FUNCTION;
-			break;
+			case 3:
+				if (response->playerMoney < response->shopItemCosts[response->shopItems[2]])
+				{
+					gameState = STATE_SHOP;
+					function  = NOT_FUNCTION;
+					std::cout << "Not enough money!" << std::endl;
+				}
+				else
+				{
+					gameState = STATE_ROOM_SELECTION;
+					function  = shopItemFunction(response->shopItems[2]);
+				}
+				break;
 
-		case 4:
-			gameState = STATE_ROOM_SELECTION;
-			function  = NOT_FUNCTION;
+			case 4:
+				gameState = STATE_ROOM_SELECTION;
+				function = NOT_FUNCTION;
+				break;
 		}
 		break;
 	}
@@ -235,7 +263,7 @@ int VideoGameUDP::UI::showDungeonInterface(int currentRoom, int maxRoom)
 
 // SHOP INTERFACE
 
-int VideoGameUDP::UI::showShopInterface(shopItemType *shopItems, int *shopItemCosts)
+int VideoGameUDP::UI::showShopInterface(shopItemType *shopItems, int *shopItemCosts, int playerMoney)
 {
 	int i;
 
@@ -243,6 +271,8 @@ int VideoGameUDP::UI::showShopInterface(shopItemType *shopItems, int *shopItemCo
 
 	std::cout << "Welcome to my shop!" << std::endl;
 	std::cout << "Please feel free to buy whatever you want " << std::endl << std::endl;
+
+	std::cout << "Your money: " << playerMoney << std::endl << std::endl;
 
 	std::cout << "Select an item to buy:" << std::endl;
 	for (i = 0; i < 3; i++)
@@ -252,27 +282,57 @@ int VideoGameUDP::UI::showShopInterface(shopItemType *shopItems, int *shopItemCo
 		switch (*(shopItems + i))
 		{
 			case HEAL_POTION:
-				std::cout << "Heal potion       - " << *(shopItemCosts + i) << "g (restores all chater's health)"     << std::endl;
+				std::cout << "Heal potion       - " << *(shopItemCosts + *(shopItems + i)) << "g (restores all chater's health)"     << std::endl;
 				break;
 
 			case KEY:
-				std::cout << "Key               - " << *(shopItemCosts + i) << "g (needed to open chests)"            << std::endl;
+				std::cout << "Key               - " << *(shopItemCosts + *(shopItems + i)) << "g (needed to open chests)"            << std::endl;
 				break;
 
 			case STRENGTH_FLASK:
-				std::cout << "Strengh Flask     - " << *(shopItemCosts + i) << "g (+3 dmg during the next combat)"    << std::endl;
+				std::cout << "Strengh Flask     - " << *(shopItemCosts + *(shopItems + i)) << "g (+2 DMG during the next combat)"    << std::endl;
 				break;
 
 			case VIGOR_FLASK:
-				std::cout << "Vigor Flask       - " << *(shopItemCosts + i) << "g (+3 health during the next combat)" << std::endl;
+				std::cout << "Vigor Flask       - " << *(shopItemCosts + *(shopItems + i)) << "g (+3 HEALTH during the next combat)" << std::endl;
 				break;
 
 			case ENDURANCE_FLASK:
-				std::cout << "Endurance Flask   - " << *(shopItemCosts + i) << "g (+3 def during the next combat)"    << std::endl;
+				std::cout << "Endurance Flask   - " << *(shopItemCosts + *(shopItems + i)) << "g (+0.2 DEF during the next combat)"  << std::endl;
 				break;
 		}
 	}
 	std::cout << i + 1 << ". Leave Shop" << std::endl << std::endl;
 
 	return UI::selectOptionMenu(1, 4);
+}
+
+functionType VideoGameUDP::UI::shopItemFunction(shopItemType shopItem)
+{
+	functionType function = NOT_FUNCTION;
+
+	switch (shopItem)
+	{
+	case HEAL_POTION:
+		function = HEAL_CHARACTER;
+		break;
+
+	case KEY:
+		function = ADD_KEY;
+		break;
+
+	case STRENGTH_FLASK:
+		function = INCREASE_STRENGHT;
+		break;
+
+	case VIGOR_FLASK:
+		function = INCREASE_VIGOR;
+		break;
+
+	case ENDURANCE_FLASK:
+		function = INCREASE_ENDURANCE;
+		break;
+	}
+
+	return function;
 }

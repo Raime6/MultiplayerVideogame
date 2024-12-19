@@ -14,11 +14,20 @@ namespace VideoGameUDP
 		Character* character;
 		int        maxRooms;
 		int        currentRoom;
+		int        playerMoney;
+		int        numKeys;
 
 	public:
 
 		VideoGame();
 		
 		bool videoGameFun(int);
+
+		// SHOP
+		void healCharacter();
+		void addKey();
+		void increaseDmg();
+		void increaseHealth();
+		void increaseDef();
 	};
 }

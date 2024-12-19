@@ -13,9 +13,10 @@ namespace VideoGameUDP
 		// Builder
 		Priest()
 		{
-			health  = 10;
-			attack  = 3;
-			defense = 0.5f;
+			maxHealth = 10;
+			health    = 10;
+			attack    = 3;
+			defense   = 0.5f;
 		}
 
 		// Methods

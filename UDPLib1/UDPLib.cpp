@@ -87,9 +87,11 @@ void to_json(json& j, const DataPacket& d)
         {"sequence"     , d.sequence},
         {"function"     , d.function},
         {"currentRoom"  , d.currentRoom},
-        {"maxRooms"     , d.function},
+        {"maxRooms"     , d.maxRooms},
         {"shopItems"    , d.shopItems},
-        {"shopItemCosts", d.shopItemCosts}
+        {"shopItemCosts", d.shopItemCosts},
+        {"playerMoney"  , d.playerMoney},
+        {"numKeys"      , d.numKeys}
     };
 }
 
@@ -103,6 +105,8 @@ void from_json(const json& j, DataPacket& d)
     j.at("maxRooms")     .get_to(d.maxRooms);
     j.at("shopItems")    .get_to(d.shopItems);
     j.at("shopItemCosts").get_to(d.shopItemCosts);
+    j.at("playerMoney")  .get_to(d.playerMoney);
+    j.at("numKeys")      .get_to(d.numKeys);
 }
 
 

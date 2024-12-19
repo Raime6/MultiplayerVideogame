@@ -47,7 +47,7 @@ namespace VideoGameUDP
 		functionType shopItemFunction(shopItemType);
 
 		// ROOM
-		int showRoomFightInterface(std::string);
-		int showRoomChestInterface(int, int, int);
+		int showRoomFightInterface(std::string, int, int, int, int);
+		int showRoomChestInterface(int);
 	};
 }

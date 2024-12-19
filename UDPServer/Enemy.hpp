@@ -1,17 +1,19 @@
 
 #pragma once
 
+#include <string>
+
 namespace VideoGameUDP
 {
 	class Enemy
 	{
 	public:
 
-		string name      = "";
-		int	   maxHealth = 0;
-		int    health    = 0;
-		int    attack    = 0;
-		float  defense   = 0;
+		std::string name      = "";
+		int	        maxHealth = 0;
+		int         health    = 0;
+		int         attack    = 0;
+		float       defense   = 0;
 
 	public:
 

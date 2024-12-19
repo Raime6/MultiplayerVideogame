@@ -85,7 +85,7 @@ VideoGameUDP::clientGameState VideoGameUDP::UI::UIFun(PDataPacket response, clie
 
 	case STATE_SHOP:
 
-		switch (showShopInterface(response->shopItems, response->shopItemCosts, response->character->playerMoney))
+		switch (showShopInterface(response->shopItems, response->shopItemCosts, response->playerMoney))
 		{
 			case 1:
 				if (response->playerMoney < response->shopItemCosts[response->shopItems[0]])
@@ -139,15 +139,27 @@ VideoGameUDP::clientGameState VideoGameUDP::UI::UIFun(PDataPacket response, clie
 	case STATE_ROOM:
 		if (response->roomGenerated == ROOM_FIGHT)
 		{
-			std::cout << "Fight Room" << std::endl;
-			/*switch (showRoomFightInterface())
+			/*switch (showRoomFightInterface(response->enemyName, response->enemyCurrentHealth, response->enemyMaxHealth, response->playerCurrentHealth, response->playerMaxHealth))
 			{
+			case 1:
+				gameState = STATE_ROOM;
+				function  = NOT_FUNCTION;
+				break;
 
+			case 2:
+				gameState = STATE_ROOM;
+				function  = NOT_FUNCTION;
+				break;
+
+			case 3:
+				gameState = STATE_MAIN_MENU;
+				function  = NOT_FUNCTION;
+				break;
 			}*/
 		}
 		else
 		{
-			switch (showRoomChestInterface(response->character->playerKeys))
+			switch (showRoomChestInterface(response->playerKeys))
 			{
 				case 1:
 					if (response->playerKeys <= 0)
@@ -381,13 +393,15 @@ functionType VideoGameUDP::UI::shopItemFunction(shopItemType shopItem)
 
 // Fight
 
-int VideoGameUDP::UI::showRoomFightInterface(std::string enemyName, int enemyCurrentHealth, int enemyMaxHealth)
+int VideoGameUDP::UI::showRoomFightInterface(std::string enemyName, int enemyCurrentHealth, int enemyMaxHealth, int playerCurrentHealth, int playerMaxHealth)
 {
 	std::cout << "========================================================================================================================" << std::endl << std::endl;
 
 	std::cout << "A " << enemyName << "is attacking!" << std::endl << std::endl;
 
-	std::cout << "HP: " << enemyCurrentHealth << "/" << enemyMaxHealth << std::endl << std::endl;
+	std::cout << "HP: " << enemyCurrentHealth  << "/" << enemyMaxHealth << std::endl << std::endl;
+	std::cout << "--------------------"        << std::endl << std::endl;
+	std::cout << "HP: " << playerCurrentHealth << "/" << playerMaxHealth << std::endl << std::endl;
 
 	std::cout << "Choose an action:"    << std::endl;
 	std::cout << "1. Ability 1"         << std::endl;

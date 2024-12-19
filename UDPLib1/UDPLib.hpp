@@ -69,20 +69,26 @@ typedef class DataPacket
         functionType function;
         
         // RETURN_ROOMS
-        int          currentRoom      = 0;
-        int          maxRooms         = 0;
+        int          currentRoom         = 0;
+        int          maxRooms            = 0;
 
         // SHOP
         shopItemType shopItems[3];
-        int          shopItemCosts[5] = {10, 5, 7, 7, 7};
+        int          shopItemCosts[5]    = {10, 5, 7, 7, 7};
 
         // CHARACTER
-        Character*   character        = nullptr;
-        int          playerMoney      = 0;
-        int          playerKeys       = 0;
+        int          playerMoney         = 0;
+        int          playerKeys          = 0;
+        int          playerCurrentHealth = 0;
+        int          playerMaxHealth     = 0;
+
+        //// ENEMY
+        std::string  enemyName           = "";
+        //int          enemyCurrentHealth  = 0;
+        //int          enemyMaxHealth      = 0;
 
         // ROOM
-        roomType     roomGenerated    = ROOM_FIGHT;
+        roomType     roomGenerated       = ROOM_FIGHT;
     
     public:
         DataPacket() {}
@@ -94,19 +100,19 @@ typedef class DataPacket
             function       = _function;
         }
 
-        DataPacket(int _client_id, int _sequence, functionType _function, int _currentRoom, int _maxRoom, _Character * character, int _playerMoney, int _numKeys, roomType _roomGenerated) : DataPacket(_client_id, _sequence, _function)
+        DataPacket(int _client_id, int _sequence, functionType _function, int _currentRoom, int _maxRoom, int _playerMoney, int _playerKeys, int _playerCurrentHealth, int _playerMaxHealth, std::string _enemyName, int _enemyCurrentHealth, int _enemyMaxHealth, roomType _roomGenerated) : DataPacket(_client_id, _sequence, _function)
         {
-            currentRoom   = _currentRoom;
-            maxRooms      = _maxRoom;
-            character     = _character;
-            playerMoney   = _playerMoney;
-            playerKeys    = playerKeys;
-            roomGenerated = _roomGenerated;
+            currentRoom         = _currentRoom;
+            maxRooms            = _maxRoom;
+            playerMoney         = _playerMoney;
+            playerKeys          = _playerKeys;
+            playerCurrentHealth = _playerCurrentHealth;
+            playerMaxHealth     = _playerMaxHealth;
+            enemyName           = _enemyName;
+            //enemyCurrentHealth  = _enemyCurrentHealth;
+            //enemyMaxHealth      = _enemyMaxHealth;
+            roomGenerated       = _roomGenerated;
         }
-
-        /*~DataPacket() {
-            delete parameters;
-        }*/
 } *PDataPacket;
 
 typedef class ThreadInfo

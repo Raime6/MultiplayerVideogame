@@ -83,34 +83,42 @@ void to_json(json& j, const DataPacket& d)
 {
     j = json
     {
-        {"client_id"    , d.client_id},
-        {"sequence"     , d.sequence},
-        {"function"     , d.function},
-        {"currentRoom"  , d.currentRoom},
-        {"maxRooms"     , d.maxRooms},
-        {"shopItems"    , d.shopItems},
-        {"shopItemCosts", d.shopItemCosts},
-        {"character"    , d.character},
-        {"playerMoney"  , d.playerMoney},
-        {"playerKeys"   , d.playerKeys},
-        {"roomGenerated", d.roomGenerated}
+        {"client_id"          , d.client_id},
+        {"sequence"           , d.sequence},
+        {"function"           , d.function},
+        {"currentRoom"        , d.currentRoom},
+        {"maxRooms"           , d.maxRooms},
+        {"shopItems"          , d.shopItems},
+        {"shopItemCosts"      , d.shopItemCosts},
+        {"playerMoney"        , d.playerMoney},
+        {"playerKeys"         , d.playerKeys},
+        {"playerCurrentHealth", d.playerCurrentHealth},
+        {"playerMaxHealth"    , d.playerMaxHealth},
+        {"enemyName"          , d.enemyName},
+        //{"enemyCurrentHealth" , d.enemyCurrentHealth},
+        //{"enemyMaxHealth"     , d.enemyMaxHealth},
+        {"roomGenerated"      , d.roomGenerated}
     };
 }
 
 //create Datapacket from json object
 void from_json(const json& j, DataPacket& d)
 {
-    j.at("client_id")    .get_to(d.client_id);
-    j.at("sequence")     .get_to(d.sequence);
-    j.at("function")     .get_to(d.function);
-    j.at("currentRoom")  .get_to(d.currentRoom);
-    j.at("maxRooms")     .get_to(d.maxRooms);
-    j.at("shopItems")    .get_to(d.shopItems);
-    j.at("shopItemCosts").get_to(d.shopItemCosts);
-    j.at("character")    .get_to(d.character);
-    j.at("playerMoney")  .get_to(d.playerMoney);
-    j.at("playerKeys")   .get_to(d.playerKeys);
-    j.at("roomGenerated").get_to(d.roomGenerated);
+    j.at("client_id")          .get_to(d.client_id);
+    j.at("sequence")           .get_to(d.sequence);
+    j.at("function")           .get_to(d.function);
+    j.at("currentRoom")        .get_to(d.currentRoom);
+    j.at("maxRooms")           .get_to(d.maxRooms);
+    j.at("shopItems")          .get_to(d.shopItems);
+    j.at("shopItemCosts")      .get_to(d.shopItemCosts);
+    j.at("playerMoney")        .get_to(d.playerMoney);
+    j.at("playerKeys")         .get_to(d.playerKeys);
+    j.at("playerCurrentHealth").get_to(d.playerCurrentHealth);
+    j.at("playerMaxHealth")    .get_to(d.playerMaxHealth);
+    j.at("enemyName")          .get_to(d.enemyName);
+    //j.at("enemyCurrentHealth") .get_to(d.enemyCurrentHealth);
+    //j.at("enemyMaxHealth")     .get_to(d.enemyMaxHealth);
+    j.at("roomGenerated")      .get_to(d.roomGenerated);
 }
 
 

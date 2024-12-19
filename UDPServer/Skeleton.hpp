@@ -13,7 +13,7 @@ namespace VideoGameUDP
 		// Builder
 		Skeleton()
 		{
-			string name = "Skeleton";
+			name        = "Skeleton";
 			maxHealth   = 7;
 			health      = 7;
 			attack      = 3;

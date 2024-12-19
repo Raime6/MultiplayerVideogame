@@ -13,7 +13,7 @@ namespace VideoGameUDP
 		// Builder
 		Slime()
 		{
-			string name = "Slime";
+			name        = "Slime";
 			maxHealth   = 10;
 			health      = 10;
 			attack      = 2;

@@ -1,27 +1,4 @@
 ﻿  UDPClient.cpp
   UI.cpp
-C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.hpp(80,18): error C2143: error de sintaxis: falta ';' delante de '*'
-C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.hpp(80,9): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
-C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.hpp(80,48): error C2238: símbolos (token) inesperados delante de ';'
-C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.hpp(97,107): error C2061: error de sintaxis: identificador '_Character'
-C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.hpp(101,13): error C2065: 'character': identificador no declarado
-C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.hpp(101,29): error C2065: '_character': identificador no declarado
-C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.hpp(102,29): error C2065: '_playerMoney': identificador no declarado
-C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.hpp(104,29): error C2065: '_roomGenerated': identificador no declarado
-C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.hpp(80,18): error C2143: error de sintaxis: falta ';' delante de '*'
-C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.hpp(80,9): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
-C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.hpp(80,48): error C2238: símbolos (token) inesperados delante de ';'
-C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.hpp(97,107): error C2061: error de sintaxis: identificador '_Character'
-C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.hpp(101,13): error C2065: 'character': identificador no declarado
-C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.hpp(101,29): error C2065: '_character': identificador no declarado
-C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.hpp(102,29): error C2065: '_playerMoney': identificador no declarado
-C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPLib1\UDPLib.hpp(104,29): error C2065: '_roomGenerated': identificador no declarado
-C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPClient\UI.cpp(88,85): error C2039: "character": no es un miembro de "DataPacket"
-C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPClient\UI.cpp(88,11): error C2660: 'VideoGameUDP::UI::showShopInterface': la función no acepta 2 argumentos
-C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPClient\UI.cpp(150,45): error C2039: "character": no es un miembro de "DataPacket"
-C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPClient\UI.cpp(150,12): error C2660: 'VideoGameUDP::UI::showRoomChestInterface': la función no acepta 1 argumentos
-C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPClient\UI.cpp(384,23): error C2511: 'int VideoGameUDP::UI::showRoomFightInterface(std::string,int,int)': la función miembro sobrecargada no se ha encontrado en 'VideoGameUDP::UI'
-C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPClient\UI.cpp(398,13): error C2352: 'VideoGameUDP::UI::selectOptionMenu': una llamada de una función miembro no estática requiere un objeto
-C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPClient\UI.cpp(403,23): error C2511: 'int VideoGameUDP::UI::showRoomChestInterface(int)': la función miembro sobrecargada no se ha encontrado en 'VideoGameUDP::UI'
-C:\Users\Alumno.DESKTOP-GV16N45.000\Documents\GitHub\MultiplayerVideogame\UDPClient\UI.cpp(416,13): error C2352: 'VideoGameUDP::UI::selectOptionMenu': una llamada de una función miembro no estática requiere un objeto
-  Generando código...
+  Generating Code...
+  UDPClient.vcxproj -> C:\Users\xcana\Documents\GitHub\MultiplayerVideogame\x64\Debug\UDPClient.exe

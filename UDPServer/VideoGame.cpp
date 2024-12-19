@@ -104,12 +104,25 @@ void VideoGameUDP::VideoGame::increaseDef()
 
 void VideoGameUDP::VideoGame::generateRoom()
 {
+    int aux = rand() % 101;
+
+    if (aux < 75)
+    {
+        roomGenerated = ROOM_FIGHT;
+        generateEnemy();
+    }
+    else
+        roomGenerated = ROOM_CHEST;
+}
+
+void VideoGameUDP::VideoGame::generateEnemy()
+{
     int aux = rand() % 2;
 
     if (aux == 0)
-        roomGenerated = ROOM_FIGHT;
+        enemy = new Skeleton();
     else
-        roomGenerated = ROOM_CHEST;
+        enemy = new Slime();
 }
 
 void VideoGameUDP::VideoGame::openChest()

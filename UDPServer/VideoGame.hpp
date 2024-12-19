@@ -4,6 +4,8 @@
 #include "Warrior.hpp"
 #include "Mage.hpp"
 #include "Priest.hpp"
+#include "Skeleton.hpp"
+#include "Slime.hpp"
 
 namespace VideoGameUDP
 {	
@@ -12,6 +14,7 @@ namespace VideoGameUDP
 	public:
 
 		Character* character;
+		Enemy*     enemy;
 		int        maxRooms;
 		int        currentRoom;
 		int        playerMoney;
@@ -31,6 +34,7 @@ namespace VideoGameUDP
 		void increaseHealth();
 		void increaseDef();
 		void generateRoom();
+		void generateEnemy();
 		void openChest();
 		void leaveRoom();
 	};

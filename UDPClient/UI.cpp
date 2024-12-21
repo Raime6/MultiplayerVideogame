@@ -139,13 +139,22 @@ VideoGameUDP::clientGameState VideoGameUDP::UI::UIFun(PDataPacket response, clie
 	case STATE_ROOM:
 		if (response->roomGenerated == ROOM_FIGHT)
 		{
+			int enemyAttack = (int)round(response->enemyAttack - (response->enemyAttack * response->playerDefense));
+
 			switch (showRoomFightInterface(response->enemyName, response->enemyCurrentHealth, response->enemyMaxHealth, response->playerCurrentHealth, response->playerMaxHealth))
 			{
 			case 1:
 				if (response->enemyCurrentHealth > response->playerAttack)
 				{
 					std::cout << "Player deals " << response->playerAttack << " to " << response->enemyName << std::endl << std::endl;
+					std::cout << response->enemyName << " deals " << enemyAttack << " to Player" << std::endl << std::endl;
 					gameState = STATE_ROOM;
+
+					if (response->playerCurrentHealth <= enemyAttack)
+					{
+						std::cout << "You have been defeated! Better luck nex time." << std::endl << std::endl;
+						gameState = STATE_MAIN_MENU;
+					}
 				}
 				else
 				{
@@ -154,10 +163,15 @@ VideoGameUDP::clientGameState VideoGameUDP::UI::UIFun(PDataPacket response, clie
 						std::cout << "You have defeated the evil and save the city of Aelthar" << std::endl << std::endl;
 						gameState = STATE_MAIN_MENU;
 					}
-					else
+					else if (response->enemyName == "Slime" || response->enemyName == "Skeleton")
 					{
 						std::cout << "You win " << response->enemyReward << " for defeating the " << response->enemyName << std::endl << std::endl;
 						gameState = STATE_ROOM_SELECTION;
+					}
+					else
+					{
+						std::cout << "You have been defeated! Better luck nex time." << std::endl << std::endl;
+						gameState = STATE_MAIN_MENU;
 					}
 				}
 

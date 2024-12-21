@@ -77,17 +77,19 @@ bool VideoGameUDP::VideoGame::videoGameFun(int function)
                 playerMoney += enemy->reward;
 
                 if (character->attackBoosted)
-                    character->attack    -= 2;
+                    character->attack -= 2;
                 else if (character->healthBoosted)
                 {
-                    character->health    -= 3;
+                    character->health -= 3;
                     character->maxHealth -= 3;
                 }
                 else if (character->defenseBoosted)
-                    character->defense   -= 0.2f;
+                    character->defense -= 0.2f;
 
                 leaveRoom();
             }
+            else
+                character->health -= (int)round(enemy->getAttack() - (enemy->getAttack() * character->defense));
 
             break;
 

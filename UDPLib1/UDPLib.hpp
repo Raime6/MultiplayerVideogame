@@ -87,11 +87,13 @@ typedef class DataPacket
         int          playerAttack        = 0;
         int          playerCurrentHealth = 0;
         int          playerMaxHealth     = 0;
+        float        playerDefense       = 0;
 
         // ENEMY
         string       enemyName           = "";
         int          enemyCurrentHealth  = 0;
         int          enemyMaxHealth      = 0;
+        int          enemyAttack         = 0;
         int          enemyReward         = 0;
     
     public:
@@ -104,7 +106,7 @@ typedef class DataPacket
             function       = _function;
         }
 
-        DataPacket(int _client_id, int _sequence, functionType _function, int _currentRoom, int _maxRooms, int _playerMoney, int _playerKeys, roomType _roomGenerated, int _playerAttack, int _playerCurrentHealth, int _playerMaxHealth) : DataPacket(_client_id, _sequence, _function)
+        DataPacket(int _client_id, int _sequence, functionType _function, int _currentRoom, int _maxRooms, int _playerMoney, int _playerKeys, roomType _roomGenerated, int _playerAttack, int _playerCurrentHealth, int _playerMaxHealth, float _playerDefense) : DataPacket(_client_id, _sequence, _function)
         {
             currentRoom         = _currentRoom;
             maxRooms            = _maxRooms;
@@ -114,13 +116,15 @@ typedef class DataPacket
             playerAttack        = _playerAttack;
             playerCurrentHealth = _playerCurrentHealth;
             playerMaxHealth     = _playerMaxHealth;
+            playerDefense       = _playerDefense;
         }
 
-        DataPacket(int _client_id, int _sequence, functionType _function, int _currentRoom, int _maxRooms, int _playerMoney, int _playerKeys, roomType _roomGenerated, int _playerAttack, int _playerCurrentHealth, int _playerMaxHealth, string _enemyName, int _enemyCurrentHealth, int _enemyMaxHealth, int _enemyReward) : DataPacket(_client_id, _sequence, _function, _currentRoom, _maxRooms, _playerMoney, _playerKeys, _roomGenerated, _playerAttack, _playerCurrentHealth, _playerMaxHealth)
+        DataPacket(int _client_id, int _sequence, functionType _function, int _currentRoom, int _maxRooms, int _playerMoney, int _playerKeys, roomType _roomGenerated, int _playerAttack, int _playerCurrentHealth, int _playerMaxHealth, float _playerDefense, string _enemyName, int _enemyCurrentHealth, int _enemyMaxHealth, int _enemyAttack, int _enemyReward) : DataPacket(_client_id, _sequence, _function, _currentRoom, _maxRooms, _playerMoney, _playerKeys, _roomGenerated, _playerAttack, _playerCurrentHealth, _playerMaxHealth, _playerDefense)
         {
             enemyName           = _enemyName;
             enemyCurrentHealth  = _enemyCurrentHealth;
             enemyMaxHealth      = _enemyMaxHealth;
+            enemyAttack         = _enemyAttack;
             enemyReward         = _enemyReward;
         }
 } *PDataPacket;

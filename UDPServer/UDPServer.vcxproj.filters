@@ -32,9 +32,6 @@
     <ClInclude Include="VideoGame.hpp">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="Character.hpp">
-      <Filter>Archivos de encabezado\Characters</Filter>
-    </ClInclude>
     <ClInclude Include="Warrior.hpp">
       <Filter>Archivos de encabezado\Characters</Filter>
     </ClInclude>
@@ -44,9 +41,6 @@
     <ClInclude Include="Priest.hpp">
       <Filter>Archivos de encabezado\Characters</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy.hpp">
-      <Filter>Archivos de encabezado\Enemies</Filter>
-    </ClInclude>
     <ClInclude Include="Slime.hpp">
       <Filter>Archivos de encabezado\Enemies</Filter>
     </ClInclude>
@@ -54,6 +48,12 @@
       <Filter>Archivos de encabezado\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="Demon.hpp">
+      <Filter>Archivos de encabezado\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.hpp">
+      <Filter>Archivos de encabezado\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.hpp">
       <Filter>Archivos de encabezado\Enemies</Filter>
     </ClInclude>
   </ItemGroup>

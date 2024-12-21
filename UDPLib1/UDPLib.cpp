@@ -90,15 +90,17 @@ void to_json(json& j, const DataPacket& d)
         {"maxRooms"           , d.maxRooms},
         {"shopItems"          , d.shopItems},
         {"shopItemCosts"      , d.shopItemCosts},
+        {"roomGenerated"      , d.roomGenerated},
         {"playerMoney"        , d.playerMoney},
         {"playerKeys"         , d.playerKeys},
         {"playerAttack"       , d.playerAttack},
         {"playerCurrentHealth", d.playerCurrentHealth},
         {"playerMaxHealth"    , d.playerMaxHealth},
-        {"roomGenerated"      , d.roomGenerated},
+        {"playerDefense"      , d.playerDefense},
         {"enemyName"          , d.enemyName},
         {"enemyCurrentHealth" , d.enemyCurrentHealth},
         {"enemyMaxHealth"     , d.enemyMaxHealth},
+        {"enemyAttack"        , d.enemyAttack},
         {"enemyReward"        , d.enemyReward }
     };
 }
@@ -113,15 +115,17 @@ void from_json(const json& j, DataPacket& d)
     j.at("maxRooms")           .get_to(d.maxRooms);
     j.at("shopItems")          .get_to(d.shopItems);
     j.at("shopItemCosts")      .get_to(d.shopItemCosts);
+    j.at("roomGenerated")      .get_to(d.roomGenerated);
     j.at("playerMoney")        .get_to(d.playerMoney);
     j.at("playerKeys")         .get_to(d.playerKeys);
     j.at("playerAttack")       .get_to(d.playerAttack);
     j.at("playerCurrentHealth").get_to(d.playerCurrentHealth);
     j.at("playerMaxHealth")    .get_to(d.playerMaxHealth);
-    j.at("roomGenerated")      .get_to(d.roomGenerated);
+    j.at("playerDefense")      .get_to(d.playerDefense);
     j.at("enemyName")          .get_to(d.enemyName);
     j.at("enemyCurrentHealth") .get_to(d.enemyCurrentHealth);
     j.at("enemyMaxHealth")     .get_to(d.enemyMaxHealth);
+    j.at("enemyAttack")        .get_to(d.enemyAttack);
     j.at("enemyReward")        .get_to(d.enemyReward);
 }
 

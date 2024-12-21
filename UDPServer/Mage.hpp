@@ -20,7 +20,6 @@ namespace VideoGameUDP
 		}
 
 		// Methods
-		void Ability1() override {}
-		void Ability2() override {}
+		void Ability() override {}
 	};
 }

@@ -53,6 +53,9 @@
     <ClInclude Include="Skeleton.hpp">
       <Filter>Archivos de encabezado\Enemies</Filter>
     </ClInclude>
+    <ClInclude Include="Demon.hpp">
+      <Filter>Archivos de encabezado\Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

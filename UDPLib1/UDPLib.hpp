@@ -12,7 +12,7 @@
 #include <nlohmann/json.hpp>
 #include <iostream>
 
-#define MSG_SIZE 256
+#define MSG_SIZE 512
 
 //using Parameter = std::variant<int>;
 using string = std::string;
@@ -22,41 +22,43 @@ using json   = nlohmann::json;
 
 enum functionType
 {
-    NOT_FUNCTION,
-    EXIT_GAME,
-    CREATE_WARRIOR,
-    CREATE_MAGE,
-    CREATE_PRIEST,
-    RETURN_ROOMS,
-    GENERATE_SHOP,
-    HEAL_CHARACTER,
-    ADD_KEY,
-    INCREASE_STRENGHT,
-    INCREASE_VIGOR,
-    INCREASE_ENDURANCE,
-    GENERATE_ROOM,
-    OPEN_CHEST,
-    LEAVE_ROOM
+    NOT_FUNCTION,       // 0
+    EXIT_GAME,          // 1
+    CREATE_WARRIOR,     // 2
+    CREATE_MAGE,        // 3
+    CREATE_PRIEST,      // 4
+    RETURN_ROOMS,       // 5
+    GENERATE_SHOP,      // 6
+    HEAL_CHARACTER,     // 7
+    ADD_KEY,            // 8
+    INCREASE_STRENGHT,  // 9
+    INCREASE_VIGOR,     // 10
+    INCREASE_ENDURANCE, // 11
+    GENERATE_ROOM,      // 12
+    OPEN_CHEST,         // 13
+    LEAVE_ROOM,         // 14
+    CHARACTER_ATTACK,   // 15
+    CHARACTER_ABILITY   // 16
 };
 
 
 
 enum shopItemType
 {
-    HEAL_POTION,
-    KEY,
-    STRENGTH_FLASK,
-    VIGOR_FLASK,
-    ENDURANCE_FLASK
+    HEAL_POTION,    // 0
+    KEY,            // 1
+    STRENGTH_FLASK, // 2
+    VIGOR_FLASK,    // 3
+    ENDURANCE_FLASK // 4
 };
 
 
 
 enum roomType
 {
-    ROOM_FIGHT,
-    ROOM_CHEST,
-    NOT_ROOM
+    ROOM_FIGHT, // 0
+    ROOM_CHEST, // 1
+    NOT_ROOM    // 2
 };
 
 
@@ -76,19 +78,21 @@ typedef class DataPacket
         shopItemType shopItems[3];
         int          shopItemCosts[5]    = {10, 5, 7, 7, 7};
 
+        // ROOM
+        roomType     roomGenerated = NOT_ROOM;
+
         // CHARACTER
         int          playerMoney         = 0;
         int          playerKeys          = 0;
+        int          playerAttack        = 0;
         int          playerCurrentHealth = 0;
         int          playerMaxHealth     = 0;
 
-        //// ENEMY
-        std::string  enemyName           = "";
-        //int          enemyCurrentHealth  = 0;
-        //int          enemyMaxHealth      = 0;
-
-        // ROOM
-        roomType     roomGenerated       = ROOM_FIGHT;
+        // ENEMY
+        string       enemyName           = "";
+        int          enemyCurrentHealth  = 0;
+        int          enemyMaxHealth      = 0;
+        int          enemyReward         = 0;
     
     public:
         DataPacket() {}
@@ -100,18 +104,24 @@ typedef class DataPacket
             function       = _function;
         }
 
-        DataPacket(int _client_id, int _sequence, functionType _function, int _currentRoom, int _maxRoom, int _playerMoney, int _playerKeys, int _playerCurrentHealth, int _playerMaxHealth, std::string _enemyName, int _enemyCurrentHealth, int _enemyMaxHealth, roomType _roomGenerated) : DataPacket(_client_id, _sequence, _function)
+        DataPacket(int _client_id, int _sequence, functionType _function, int _currentRoom, int _maxRooms, int _playerMoney, int _playerKeys, roomType _roomGenerated, int _playerAttack, int _playerCurrentHealth, int _playerMaxHealth) : DataPacket(_client_id, _sequence, _function)
         {
             currentRoom         = _currentRoom;
-            maxRooms            = _maxRoom;
+            maxRooms            = _maxRooms;
             playerMoney         = _playerMoney;
             playerKeys          = _playerKeys;
+            roomGenerated       = _roomGenerated;
+            playerAttack        = _playerAttack;
             playerCurrentHealth = _playerCurrentHealth;
             playerMaxHealth     = _playerMaxHealth;
+        }
+
+        DataPacket(int _client_id, int _sequence, functionType _function, int _currentRoom, int _maxRooms, int _playerMoney, int _playerKeys, roomType _roomGenerated, int _playerAttack, int _playerCurrentHealth, int _playerMaxHealth, string _enemyName, int _enemyCurrentHealth, int _enemyMaxHealth, int _enemyReward) : DataPacket(_client_id, _sequence, _function, _currentRoom, _maxRooms, _playerMoney, _playerKeys, _roomGenerated, _playerAttack, _playerCurrentHealth, _playerMaxHealth)
+        {
             enemyName           = _enemyName;
-            //enemyCurrentHealth  = _enemyCurrentHealth;
-            //enemyMaxHealth      = _enemyMaxHealth;
-            roomGenerated       = _roomGenerated;
+            enemyCurrentHealth  = _enemyCurrentHealth;
+            enemyMaxHealth      = _enemyMaxHealth;
+            enemyReward         = _enemyReward;
         }
 } *PDataPacket;
 

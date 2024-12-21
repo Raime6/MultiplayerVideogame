@@ -140,6 +140,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Character.hpp" />
+    <ClInclude Include="Demon.hpp" />
     <ClInclude Include="Enemy.hpp" />
     <ClInclude Include="Mage.hpp" />
     <ClInclude Include="Priest.hpp" />

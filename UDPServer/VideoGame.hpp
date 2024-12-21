@@ -6,6 +6,7 @@
 #include "Priest.hpp"
 #include "Skeleton.hpp"
 #include "Slime.hpp"
+#include "Demon.hpp"
 
 namespace VideoGameUDP
 {	

@@ -1,6 +1,8 @@
 
 #pragma once
 
+#include "Enemy.hpp"
+
 namespace VideoGameUDP
 {
 	class Character
@@ -18,7 +20,11 @@ namespace VideoGameUDP
 
 	public:
 
-		virtual void Ability1() = 0;
-		virtual void Ability2() = 0;
+		void Attack(Enemy* enemy)
+		{
+			enemy->health -= attack;
+		}
+
+		virtual void Ability() = 0;
 	};
 }

@@ -17,11 +17,10 @@ namespace VideoGameUDP
 			maxHealth   = 10;
 			health      = 10;
 			attack      = 2;
-			defense     = 0.4f;
+			reward      = 7;
 		}
 
 		// Methods
-		void Attack()  override {};
 		void Ability() override {};
 	};
 }

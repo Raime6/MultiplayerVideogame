@@ -3,6 +3,8 @@
 
 #include <string>
 
+#include "Character.hpp"
+
 namespace VideoGameUDP
 {
 	class Enemy
@@ -13,11 +15,15 @@ namespace VideoGameUDP
 		int	        maxHealth = 0;
 		int         health    = 0;
 		int         attack    = 0;
-		float       defense   = 0;
+		int         reward    = 0;
 
 	public:
 
-		virtual void Attack()  = 0;
+		/*void Attack(Character* character)
+		{
+			character->health -= (int) attack * character->defense;
+		}*/
+
 		virtual void Ability() = 0;
 	};
 }

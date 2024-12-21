@@ -69,6 +69,30 @@ bool VideoGameUDP::VideoGame::videoGameFun(int function)
         case LEAVE_ROOM:
             leaveRoom();
             break;
+
+        case CHARACTER_ATTACK:
+            character->Attack(enemy);
+            if (enemy->health <= 0)
+            {
+                playerMoney += enemy->reward;
+
+                if (character->attackBoosted)
+                    character->attack    -= 2;
+                else if (character->healthBoosted)
+                {
+                    character->health    -= 3;
+                    character->maxHealth -= 3;
+                }
+                else if (character->defenseBoosted)
+                    character->defense   -= 0.2f;
+
+                leaveRoom();
+            }
+
+            break;
+
+        case CHARACTER_ABILITY:
+            break;
     }
 
     return boolean;
@@ -76,37 +100,52 @@ bool VideoGameUDP::VideoGame::videoGameFun(int function)
 
 void VideoGameUDP::VideoGame::healCharacter()
 {
-    character->health = character->maxHealth;
+    character->health  = character->maxHealth;
+    playerMoney       -= 10;
 }
 
 void VideoGameUDP::VideoGame::addKey()
 {
     playerKeys++;
+    playerMoney -= 5;
 }
 
 void VideoGameUDP::VideoGame::increaseDmg()
 {
-    character->attack        += 2;
-    character->attackBoosted  = true;
+    if (!character->attackBoosted)
+    {
+        character->attack        += 2;
+        character->attackBoosted  = true;
+        playerMoney              -= 7;
+    }
 }
 
 void VideoGameUDP::VideoGame::increaseHealth()
 {
-    character->health        += 3;
-    character->healthBoosted  = true;
+    if (!character->healthBoosted)
+    {
+        character->health        += 3;
+        character->maxHealth     += 3;
+        character->healthBoosted  = true;
+        playerMoney              -= 7;
+    }
 }
 
 void VideoGameUDP::VideoGame::increaseDef()
 {
-    character->defense        += 0.2f;
-    character->defenseBoosted  = true;
+    if (!character->defenseBoosted)
+    {
+        character->defense        += 0.2f;
+        character->defenseBoosted  = true;
+        playerMoney               -= 7;
+    }
 }
 
 void VideoGameUDP::VideoGame::generateRoom()
 {
     int aux = rand() % 101;
 
-    if (aux < 75)
+    if (aux < 75 || currentRoom == maxRooms)
     {
         roomGenerated = ROOM_FIGHT;
         generateEnemy();
@@ -119,7 +158,9 @@ void VideoGameUDP::VideoGame::generateEnemy()
 {
     int aux = rand() % 2;
 
-    if (aux == 0)
+    if (currentRoom == maxRooms)
+        enemy = new Demon();
+    else if (aux == 0)
         enemy = new Skeleton();
     else
         enemy = new Slime();

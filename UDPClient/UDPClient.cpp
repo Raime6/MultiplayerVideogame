@@ -79,8 +79,7 @@ int main(int argc, char* argv[])
         if (function != NOT_FUNCTION)
         {
             PDataPacket packet = new DataPacket(client, sequence, function);
-
-            if(function == RETURN_ROOMS || function == GENERATE_SHOP || function == GENERATE_ROOM || function == LEAVE_ROOM || function == OPEN_CHEST)
+            if (function == RETURN_ROOMS || function == GENERATE_SHOP || function == GENERATE_ROOM || function == LEAVE_ROOM || function == OPEN_CHEST || function == CHARACTER_ATTACK || function == CHARACTER_ABILITY)
                 sendtorecvfromMsg(s, &server_addr, packet, response, prefix);
             else
                 sendtoMsg(s, &server_addr, packet, prefix);

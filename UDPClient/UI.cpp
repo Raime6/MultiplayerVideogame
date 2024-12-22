@@ -180,6 +180,52 @@ VideoGameUDP::clientGameState VideoGameUDP::UI::UIFun(PDataPacket response, clie
 
 			case 2:
 				gameState = STATE_ROOM;
+
+				if (response->playerType == WARRIOR)
+				{
+					if (response->playerCurrentHealth <= enemyAttack)
+					{
+						std::cout << "You have been defeated! Better luck nex time." << std::endl << std::endl;
+						gameState = STATE_MAIN_MENU;
+					}
+					else
+						std::cout << "Player reflects " << response->enemyAttack << " to " << response->enemyName << std::endl << std::endl;
+
+					if (response->enemyCurrentHealth <= response->enemyAttack)
+					{
+						if (response->enemyName == "Demon")
+						{
+							std::cout << "You have defeated the evil and save the city of Aelthar" << std::endl << std::endl;
+							gameState = STATE_MAIN_MENU;
+						}
+						else if (response->enemyName == "Slime" || response->enemyName == "Skeleton")
+						{
+							std::cout << "You win " << response->enemyReward << " for defeating the " << response->enemyName << std::endl << std::endl;
+							gameState = STATE_ROOM_SELECTION;
+						}
+					}
+				}
+				else if (response->playerType == PRIEST)
+				{
+					std::cout << "Player restores +2 health" << std::endl << std::endl;
+					std::cout << response->enemyName << " deals " << enemyAttack << " to Player" << std::endl << std::endl;
+					if ((response->playerCurrentHealth + 2) <= enemyAttack)
+					{
+						std::cout << "You have been defeated! Better luck nex time." << std::endl << std::endl;
+						gameState = STATE_MAIN_MENU;
+					}
+				}
+				else if (response->playerType == MAGE)
+				{
+					if (response->currentRoom == response->maxRooms)
+						std::cout << "You can't use this ability right now" << std::endl << std::endl;
+					else
+					{
+						std::cout << "Player teleported outside the fight" << std::endl << std::endl;
+						gameState = STATE_ROOM_SELECTION;
+					}
+				}
+
 				function  = CHARACTER_ABILITY;
 				break;
 
@@ -284,7 +330,7 @@ int VideoGameUDP::UI::showSelectCharacter()
 	std::cout << "	- HP     : 7"                         << std::endl;
 	std::cout << "	- Atk    : 5"                         << std::endl;
 	std::cout << "	- Def    : 2"                         << std::endl;
-	std::cout << "	- Ability: Increase Atk"              << std::endl << std::endl;
+	std::cout << "	- Ability: Teleport"                  << std::endl << std::endl;
 
 	std::cout << "3. Priest"                              << std::endl;
 	std::cout << "	- HP     : 10"                        << std::endl;

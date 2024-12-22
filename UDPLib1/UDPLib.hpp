@@ -43,6 +43,16 @@ enum functionType
 
 
 
+enum characterType
+{
+    NO_TYPE,
+    WARRIOR,
+    MAGE,
+    PRIEST
+};
+
+
+
 enum shopItemType
 {
     HEAL_POTION,    // 0
@@ -71,30 +81,34 @@ typedef class DataPacket
         functionType function;
         
         // RETURN_ROOMS
-        int          currentRoom         = 0;
-        int          maxRooms            = 0;
+        int           currentRoom         = 0;
+        int           maxRooms            = 0;
 
         // SHOP
-        shopItemType shopItems[3];
-        int          shopItemCosts[5]    = {10, 5, 7, 7, 7};
+        shopItemType  shopItems[3];
+        int           shopItemCosts[5]    = {10, 5, 7, 7, 7};
 
         // ROOM
-        roomType     roomGenerated = NOT_ROOM;
+        roomType      roomGenerated = NOT_ROOM;
+
+        // PLAYER
+        int           playerMoney         = 0;
+        int           playerKeys          = 0;
 
         // CHARACTER
-        int          playerMoney         = 0;
-        int          playerKeys          = 0;
-        int          playerAttack        = 0;
-        int          playerCurrentHealth = 0;
-        int          playerMaxHealth     = 0;
-        float        playerDefense       = 0;
+        characterType playerType          = NO_TYPE;
+        int           playerAttack        = 0;
+        int           playerCurrentHealth = 0;
+        int           playerMaxHealth     = 0;
+        float         playerDefense       = 0;
+        bool          playerIsBlocking    = false;
 
         // ENEMY
-        string       enemyName           = "";
-        int          enemyCurrentHealth  = 0;
-        int          enemyMaxHealth      = 0;
-        int          enemyAttack         = 0;
-        int          enemyReward         = 0;
+        string        enemyName           = "";
+        int           enemyCurrentHealth  = 0;
+        int           enemyMaxHealth      = 0;
+        int           enemyAttack         = 0;
+        int           enemyReward         = 0;
     
     public:
         DataPacket() {}
@@ -106,20 +120,22 @@ typedef class DataPacket
             function       = _function;
         }
 
-        DataPacket(int _client_id, int _sequence, functionType _function, int _currentRoom, int _maxRooms, int _playerMoney, int _playerKeys, roomType _roomGenerated, int _playerAttack, int _playerCurrentHealth, int _playerMaxHealth, float _playerDefense) : DataPacket(_client_id, _sequence, _function)
+        DataPacket(int _client_id, int _sequence, functionType _function, int _currentRoom, int _maxRooms, int _playerMoney, int _playerKeys, roomType _roomGenerated, characterType _playerType, int _playerAttack, int _playerCurrentHealth, int _playerMaxHealth, float _playerDefense, bool _playerIsBlocking) : DataPacket(_client_id, _sequence, _function)
         {
             currentRoom         = _currentRoom;
             maxRooms            = _maxRooms;
             playerMoney         = _playerMoney;
             playerKeys          = _playerKeys;
             roomGenerated       = _roomGenerated;
+            playerType          = _playerType;
             playerAttack        = _playerAttack;
             playerCurrentHealth = _playerCurrentHealth;
             playerMaxHealth     = _playerMaxHealth;
             playerDefense       = _playerDefense;
+            playerIsBlocking    = _playerIsBlocking;
         }
 
-        DataPacket(int _client_id, int _sequence, functionType _function, int _currentRoom, int _maxRooms, int _playerMoney, int _playerKeys, roomType _roomGenerated, int _playerAttack, int _playerCurrentHealth, int _playerMaxHealth, float _playerDefense, string _enemyName, int _enemyCurrentHealth, int _enemyMaxHealth, int _enemyAttack, int _enemyReward) : DataPacket(_client_id, _sequence, _function, _currentRoom, _maxRooms, _playerMoney, _playerKeys, _roomGenerated, _playerAttack, _playerCurrentHealth, _playerMaxHealth, _playerDefense)
+        DataPacket(int _client_id, int _sequence, functionType _function, int _currentRoom, int _maxRooms, int _playerMoney, int _playerKeys, roomType _roomGenerated, characterType _playerType, int _playerAttack, int _playerCurrentHealth, int _playerMaxHealth, float _playerDefense, bool _playerIsBlocking, string _enemyName, int _enemyCurrentHealth, int _enemyMaxHealth, int _enemyAttack, int _enemyReward) : DataPacket(_client_id, _sequence, _function, _currentRoom, _maxRooms, _playerMoney, _playerKeys, _roomGenerated, _playerType, _playerAttack, _playerCurrentHealth, _playerMaxHealth, _playerDefense, _playerIsBlocking)
         {
             enemyName           = _enemyName;
             enemyCurrentHealth  = _enemyCurrentHealth;

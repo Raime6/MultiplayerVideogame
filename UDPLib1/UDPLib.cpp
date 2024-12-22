@@ -93,10 +93,12 @@ void to_json(json& j, const DataPacket& d)
         {"roomGenerated"      , d.roomGenerated},
         {"playerMoney"        , d.playerMoney},
         {"playerKeys"         , d.playerKeys},
+        {"playerType"         , d.playerType},
         {"playerAttack"       , d.playerAttack},
         {"playerCurrentHealth", d.playerCurrentHealth},
         {"playerMaxHealth"    , d.playerMaxHealth},
         {"playerDefense"      , d.playerDefense},
+        {"playerIsBlocking"   , d.playerIsBlocking},
         {"enemyName"          , d.enemyName},
         {"enemyCurrentHealth" , d.enemyCurrentHealth},
         {"enemyMaxHealth"     , d.enemyMaxHealth},
@@ -118,10 +120,12 @@ void from_json(const json& j, DataPacket& d)
     j.at("roomGenerated")      .get_to(d.roomGenerated);
     j.at("playerMoney")        .get_to(d.playerMoney);
     j.at("playerKeys")         .get_to(d.playerKeys);
+    j.at("playerType")         .get_to(d.playerType);
     j.at("playerAttack")       .get_to(d.playerAttack);
     j.at("playerCurrentHealth").get_to(d.playerCurrentHealth);
     j.at("playerMaxHealth")    .get_to(d.playerMaxHealth);
     j.at("playerDefense")      .get_to(d.playerDefense);
+    j.at("playerIsBlocking")   .get_to(d.playerIsBlocking);
     j.at("enemyName")          .get_to(d.enemyName);
     j.at("enemyCurrentHealth") .get_to(d.enemyCurrentHealth);
     j.at("enemyMaxHealth")     .get_to(d.enemyMaxHealth);

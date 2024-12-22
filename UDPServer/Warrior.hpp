@@ -13,6 +13,7 @@ namespace VideoGameUDP
 		// Builder
 		Warrior()
 		{
+			type      = WARRIOR;
 			maxHealth = 12;
 			health    = 12;
 			attack    = 2;
@@ -20,6 +21,9 @@ namespace VideoGameUDP
 		}
 
 		// Methods
-		void Ability() override {}
+		void Ability() override
+		{
+			isBlocking = true;
+		}
 	};
 }

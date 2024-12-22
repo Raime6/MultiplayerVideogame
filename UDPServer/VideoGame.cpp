@@ -94,6 +94,39 @@ bool VideoGameUDP::VideoGame::videoGameFun(int function)
             break;
 
         case CHARACTER_ABILITY:
+            character->Ability();
+            
+            if (character->isBlocking)
+            {
+                enemy->health -= enemy->getAttack();
+                character->isBlocking = false;
+            }
+            else
+                character->health -= (int)round(enemy->getAttack() - (enemy->getAttack() * character->defense));
+
+            if (enemy->health <= 0)
+            {
+                playerMoney += enemy->reward;
+
+                if (character->attackBoosted)
+                    character->attack -= 2;
+                else if (character->healthBoosted)
+                {
+                    character->health -= 3;
+                    character->maxHealth -= 3;
+                }
+                else if (character->defenseBoosted)
+                    character->defense -= 0.2f;
+
+                leaveRoom();
+            }
+
+            if (character->type == MAGE)
+            {
+                if (currentRoom < maxRooms)
+                    leaveRoom();
+            }
+
             break;
     }
 

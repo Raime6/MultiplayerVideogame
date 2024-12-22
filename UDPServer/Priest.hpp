@@ -13,6 +13,7 @@ namespace VideoGameUDP
 		// Builder
 		Priest()
 		{
+			type	  = PRIEST;
 			maxHealth = 10;
 			health    = 10;
 			attack    = 3;
@@ -20,6 +21,11 @@ namespace VideoGameUDP
 		}
 
 		// Methods
-		void Ability() override {}
+		void Ability() override
+		{
+			health += 2;
+			if (health > maxHealth)
+				health = maxHealth;
+		}
 	};
 }

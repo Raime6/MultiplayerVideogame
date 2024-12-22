@@ -183,40 +183,40 @@ DWORD WINAPI threadFun(LPVOID param)
                 videoGame.currentRoom  = 1;
                 videoGame.playerKeys   = 0;
                 videoGame.playerMoney  = 0;
-                response = new DataPacket(clientPacket.client_id, clientPacket.sequence, clientPacket.function, videoGame.currentRoom, videoGame.maxRooms, videoGame.playerMoney, videoGame.playerKeys, videoGame.roomGenerated, videoGame.character->attack, videoGame.character->health, videoGame.character->maxHealth, videoGame.character->defense);
+                response = new DataPacket(clientPacket.client_id, clientPacket.sequence, clientPacket.function, videoGame.currentRoom, videoGame.maxRooms, videoGame.playerMoney, videoGame.playerKeys, videoGame.roomGenerated, videoGame.character->type, videoGame.character->attack, videoGame.character->health, videoGame.character->maxHealth, videoGame.character->defense, videoGame.character->isBlocking);
                 sendtoMsg(thInfo->s, &client_addr, response, thInfo->prefix);
                 break;
 
             case GENERATE_ROOM:
                 if (videoGame.roomGenerated == ROOM_FIGHT)
-                    response = new DataPacket(clientPacket.client_id, clientPacket.sequence, clientPacket.function, videoGame.currentRoom, videoGame.maxRooms, videoGame.playerMoney, videoGame.playerKeys, videoGame.roomGenerated, videoGame.character->attack, videoGame.character->health, videoGame.character->maxHealth, videoGame.character->defense, videoGame.enemy->name, videoGame.enemy->health, videoGame.enemy->maxHealth, videoGame.enemy->attack, videoGame.enemy->reward);
+                    response = new DataPacket(clientPacket.client_id, clientPacket.sequence, clientPacket.function, videoGame.currentRoom, videoGame.maxRooms, videoGame.playerMoney, videoGame.playerKeys, videoGame.roomGenerated, videoGame.character->type, videoGame.character->attack, videoGame.character->health, videoGame.character->maxHealth, videoGame.character->defense, videoGame.character->isBlocking, videoGame.enemy->name, videoGame.enemy->health, videoGame.enemy->maxHealth, videoGame.enemy->attack, videoGame.enemy->reward);
                 else
-                    response = new DataPacket(clientPacket.client_id, clientPacket.sequence, clientPacket.function, videoGame.currentRoom, videoGame.maxRooms, videoGame.playerMoney, videoGame.playerKeys, videoGame.roomGenerated, videoGame.character->attack, videoGame.character->health, videoGame.character->maxHealth, videoGame.character->defense);
+                    response = new DataPacket(clientPacket.client_id, clientPacket.sequence, clientPacket.function, videoGame.currentRoom, videoGame.maxRooms, videoGame.playerMoney, videoGame.playerKeys, videoGame.roomGenerated, videoGame.character->type, videoGame.character->attack, videoGame.character->health, videoGame.character->maxHealth, videoGame.character->defense, videoGame.character->isBlocking);
                 sendtoMsg(thInfo->s, &client_addr, response, thInfo->prefix);
                 break;
 
             case OPEN_CHEST:
-                response = new DataPacket(clientPacket.client_id, clientPacket.sequence, clientPacket.function, videoGame.currentRoom, videoGame.maxRooms, videoGame.playerMoney, videoGame.playerKeys, videoGame.roomGenerated, videoGame.character->attack, videoGame.character->health, videoGame.character->maxHealth, videoGame.character->defense);
+                response = new DataPacket(clientPacket.client_id, clientPacket.sequence, clientPacket.function, videoGame.currentRoom, videoGame.maxRooms, videoGame.playerMoney, videoGame.playerKeys, videoGame.roomGenerated, videoGame.character->type, videoGame.character->attack, videoGame.character->health, videoGame.character->maxHealth, videoGame.character->defense, videoGame.character->isBlocking);
                 sendtoMsg(thInfo->s, &client_addr, response, thInfo->prefix);
                 break;
 
             case LEAVE_ROOM:
-                response = new DataPacket(clientPacket.client_id, clientPacket.sequence, clientPacket.function, videoGame.currentRoom, videoGame.maxRooms, videoGame.playerMoney, videoGame.playerKeys, videoGame.roomGenerated, videoGame.character->attack, videoGame.character->health, videoGame.character->maxHealth, videoGame.character->defense);
+                response = new DataPacket(clientPacket.client_id, clientPacket.sequence, clientPacket.function, videoGame.currentRoom, videoGame.maxRooms, videoGame.playerMoney, videoGame.playerKeys, videoGame.roomGenerated, videoGame.character->type, videoGame.character->attack, videoGame.character->health, videoGame.character->maxHealth, videoGame.character->defense, videoGame.character->isBlocking);
                 sendtoMsg(thInfo->s, &client_addr, response, thInfo->prefix);
                 break;
 
             case CHARACTER_ATTACK:
-                response = new DataPacket(clientPacket.client_id, clientPacket.sequence, clientPacket.function, videoGame.currentRoom, videoGame.maxRooms, videoGame.playerMoney, videoGame.playerKeys, videoGame.roomGenerated, videoGame.character->attack, videoGame.character->health, videoGame.character->maxHealth, videoGame.character->defense, videoGame.enemy->name, videoGame.enemy->health, videoGame.enemy->maxHealth, videoGame.enemy->attack, videoGame.enemy->reward);
+                response = new DataPacket(clientPacket.client_id, clientPacket.sequence, clientPacket.function, videoGame.currentRoom, videoGame.maxRooms, videoGame.playerMoney, videoGame.playerKeys, videoGame.roomGenerated, videoGame.character->type, videoGame.character->attack, videoGame.character->health, videoGame.character->maxHealth, videoGame.character->defense, videoGame.character->isBlocking, videoGame.enemy->name, videoGame.enemy->health, videoGame.enemy->maxHealth, videoGame.enemy->attack, videoGame.enemy->reward);
                 sendtoMsg(thInfo->s, &client_addr, response, thInfo->prefix);
                 break;
 
             case CHARACTER_ABILITY:
-                response = new DataPacket(clientPacket.client_id, clientPacket.sequence, clientPacket.function, videoGame.currentRoom, videoGame.maxRooms, videoGame.playerMoney, videoGame.playerKeys, videoGame.roomGenerated, videoGame.character->attack, videoGame.character->health, videoGame.character->maxHealth, videoGame.character->defense, videoGame.enemy->name, videoGame.enemy->health, videoGame.enemy->maxHealth, videoGame.enemy->attack, videoGame.enemy->reward);
+                response = new DataPacket(clientPacket.client_id, clientPacket.sequence, clientPacket.function, videoGame.currentRoom, videoGame.maxRooms, videoGame.playerMoney, videoGame.playerKeys, videoGame.roomGenerated, videoGame.character->type, videoGame.character->attack, videoGame.character->health, videoGame.character->maxHealth, videoGame.character->defense, videoGame.character->isBlocking, videoGame.enemy->name, videoGame.enemy->health, videoGame.enemy->maxHealth, videoGame.enemy->attack, videoGame.enemy->reward);
                 sendtoMsg(thInfo->s, &client_addr, response, thInfo->prefix);
                 break;
 
             case GENERATE_SHOP:
-                response = new DataPacket(clientPacket.client_id, clientPacket.sequence, clientPacket.function, videoGame.currentRoom, videoGame.maxRooms, videoGame.playerMoney, videoGame.playerKeys, videoGame.roomGenerated, videoGame.character->attack, videoGame.character->health, videoGame.character->maxHealth, videoGame.character->defense);
+                response = new DataPacket(clientPacket.client_id, clientPacket.sequence, clientPacket.function, videoGame.currentRoom, videoGame.maxRooms, videoGame.playerMoney, videoGame.playerKeys, videoGame.roomGenerated, videoGame.character->type, videoGame.character->attack, videoGame.character->health, videoGame.character->maxHealth, videoGame.character->defense, videoGame.character->isBlocking);
                 shopItemType arrayItems[5] = { HEAL_POTION, KEY, STRENGTH_FLASK, VIGOR_FLASK, ENDURANCE_FLASK };
                 for (int i = 0; i < 3; i++)
                 {

@@ -153,7 +153,7 @@ int sendtoMsg(SOCKET s, sockaddr_in* dest_addr, PDataPacket packet, std::string 
     int result = sendto(s, json_text, sizeof(json_text), 0, (SOCKADDR*)dest_addr, sizeof(SOCKADDR));
     assert(result != SOCKET_ERROR);
 
-    std::cout << prefix << " succesfully sent msg: " << *packet << std::endl << std::endl;
+    std::cout << std::endl << prefix << " succesfully sent msg: " << *packet << std::endl << std::endl << std::endl;
 
     return result;
 }
@@ -176,7 +176,7 @@ int recvfromMsg(SOCKET s, sockaddr_in* sender_addr, PDataPacket response, std::s
     //conversion json -> DataPacket invoking from_json
     *response = j2;
 
-    std::cout << prefix << " succesfully received: " << *response << std::endl << std::endl;
+    std::cout << std::endl << prefix << " succesfully received: " << *response << std::endl << std::endl << std::endl;
 
     return result;
 }
